@@ -42,7 +42,7 @@ public abstract class Test {
 
     private void executeUnitTests() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Integer> choosenUnitTests = new ArrayList<>();
+        ArrayList<Integer> chosenUnitTests = new ArrayList<>();
         System.out.println("Input unit tests to start testing (end with -1):");
         while (scanner.hasNextInt()) {
             String input = scanner.next();
@@ -52,10 +52,10 @@ public abstract class Test {
                 System.out.println("Invalid unit test id");
                 continue;
             }
-            choosenUnitTests.add(temp);
+            chosenUnitTests.add(temp);
         }
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
-        for (int testId : choosenUnitTests) {
+        for (int testId : chosenUnitTests) {
             this.unitTests.get(testId - 1).startUnitTest();
         }
         System.out.println(ANSI.YELLOW + "Finished..." + ANSI.RESET);
