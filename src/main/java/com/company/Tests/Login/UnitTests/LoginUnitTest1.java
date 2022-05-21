@@ -20,8 +20,8 @@ public class LoginUnitTest1 extends UnitTest {
         this.params.put("password", "123456");
 
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
-
         this.assertionManager.assertNotEquals(res, null);
+        if (res == null) return;
 
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertInstanceOf(res.message, String.class);
@@ -39,6 +39,6 @@ public class LoginUnitTest1 extends UnitTest {
         this.assertionManager.assertInstanceOf(user.avatar, String.class);
         this.assertionManager.assertEquals(user.email, tempEmail);
         this.assertionManager.assertInstanceOf(user.phone, String.class);
-
+        
     }
 }
