@@ -14,7 +14,7 @@ public class SignUpUnitTest2 extends UnitTest {
     }
 
     @Override
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
         String email = Util.randomAlphabetString(8) + "@gmail.com";
         String password = "1231231234";
         String name = Util.randomAlphabetString(6);
@@ -32,6 +32,5 @@ public class SignUpUnitTest2 extends UnitTest {
         this.assertionManager.assertEquals(res.code, 1001);
         this.assertionManager.assertInstanceOf(res.message, String.class);
         this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.judge();
     }
 }

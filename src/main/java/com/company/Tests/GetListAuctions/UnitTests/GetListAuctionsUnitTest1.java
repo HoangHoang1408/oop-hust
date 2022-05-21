@@ -12,14 +12,13 @@ public class GetListAuctionsUnitTest1 extends UnitTest {
     }
 
     @Override
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
         String index = "1";
         String count = "5";
-        this.params.put("index", "1");
-        this.params.put("count", "5");
+        this.params.put("index", index);
+        this.params.put("count", count);
         GetListAuctionsResponse res = this.sendGetRequestWithAccessToken(GetListAuctionsResponse.class);
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
-        this.assertionManager.judge();
     }
 }

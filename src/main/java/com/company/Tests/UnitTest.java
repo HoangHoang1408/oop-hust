@@ -48,7 +48,12 @@ public abstract class UnitTest {
         return ConnectionUtil.sendGetRequest(this.fullURLString, this.params, cl, accessToken);
     }
 
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
+    }
+
+    public boolean startUnitTest() throws IOException {
+        this.test();
+        return this.assertionManager.judge();
     }
 
     public String getExpectation() {

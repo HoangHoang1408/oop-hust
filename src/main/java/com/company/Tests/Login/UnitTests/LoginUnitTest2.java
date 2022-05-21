@@ -13,7 +13,7 @@ public class LoginUnitTest2 extends UnitTest {
     }
 
     @Override
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
 
         this.params.put("email", "thanh12345@gmail.com");
         this.params.put("password", "123456546");
@@ -32,6 +32,5 @@ public class LoginUnitTest2 extends UnitTest {
         this.assertionManager.assertEquals(res.code, 1002);
         this.assertionManager.assertEquals(res.data, null);
 
-        this.assertionManager.judge();
     }
 }

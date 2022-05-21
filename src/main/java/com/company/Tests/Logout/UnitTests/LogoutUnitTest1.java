@@ -12,12 +12,11 @@ public class LogoutUnitTest1 extends UnitTest {
     }
 
     @Override
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
         LogoutResponse res = this.sendPostRequestWithAccessToken(LogoutResponse.class);
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertInstanceOf(res.message, String.class);
         this.assertionManager.assertNotEquals(res.message, "");
         this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.judge();
     }
 }

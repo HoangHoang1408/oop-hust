@@ -31,16 +31,20 @@ public class AssertionManager {
         this.check = a;
     }
 
-    public void judge() {
-        if (check) notifyTestPassed();
-        else notifyTestFailed();
+    public boolean judge() {
+        if (check) {
+            notifyTestPassed();
+            return true;
+        }
+        notifyTestFailed();
+        return false;
     }
 
     private void notifyTestPassed() {
-        System.out.println(ANSI.GREEN + "Expectation: " + this.expectation + " => Passed!" + ANSI.RESET);
+        System.out.println(ANSI.GREEN + "Unit test: " + this.expectation + " => Passed!" + ANSI.RESET);
     }
 
     private void notifyTestFailed() {
-        System.out.println(ANSI.RED + "Expectation: " + this.expectation + " => Failed!" + ANSI.RESET);
+        System.out.println(ANSI.RED + "Unit test: " + this.expectation + " => Failed!" + ANSI.RESET);
     }
 }

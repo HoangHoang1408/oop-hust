@@ -13,7 +13,7 @@ public class SignUpUnitTest1 extends UnitTest {
     }
 
     @Override
-    public void startUnitTest() throws IOException {
+    public void test() throws IOException {
         //        create request object
         this.params.put("email", Util.randomAlphabetString(8) + "@gmail.com");
         this.params.put("password", "12345678");
@@ -25,6 +25,5 @@ public class SignUpUnitTest1 extends UnitTest {
 
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.judge();
     }
 }

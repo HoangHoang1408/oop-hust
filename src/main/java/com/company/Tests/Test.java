@@ -35,7 +35,7 @@ public abstract class Test {
         System.out.print(ANSI.YELLOW);
         System.out.println("\nUnit tests for " + this.apiName + ": ");
         for (int i = 0; i < unitTests.size(); i++) {
-            System.out.println("Expectation " + (i + 1) + ": " + unitTests.get(i).getExpectation());
+            System.out.println("Unit test " + (i + 1) + ": " + unitTests.get(i).getExpectation());
         }
         System.out.println(ANSI.RESET);
     }
@@ -55,10 +55,13 @@ public abstract class Test {
             chosenUnitTests.add(temp);
         }
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
+        int totalTestsPassed = 0;
         for (int testId : chosenUnitTests) {
-            this.unitTests.get(testId - 1).startUnitTest();
+            boolean passed = this.unitTests.get(testId - 1).startUnitTest();
+            if (passed) totalTestsPassed += 1;
         }
-        System.out.println(ANSI.YELLOW + "Finished..." + ANSI.RESET);
+        String color = totalTestsPassed == chosenUnitTests.size() ? ANSI.GREEN : ANSI.RED;
+        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + chosenUnitTests.size() + " tests passed!" + ANSI.RESET);
     }
 
     public String getFullURLString() {
