@@ -22,7 +22,7 @@ public abstract class UnitTest {
         this.assertionManager = new AssertionManager(expectation);
     }
 
-    private String getAccessToken() throws IOException {
+    protected String getAccessToken() throws IOException {
         HashMap<String, String> tempParams = new HashMap<>();
         tempParams.put("email", "hoang1482002@gmail.com");
         tempParams.put("password", "12345678");

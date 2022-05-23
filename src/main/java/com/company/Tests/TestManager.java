@@ -1,6 +1,7 @@
 package com.company.Tests;
 
 import com.company.BaseURL;
+import com.company.Tests.CreateComment.CreateCommentTest;
 import com.company.Tests.GetListAuctions.GetListAuctionsTest;
 import com.company.Tests.Login.LoginTest;
 import com.company.Tests.Logout.LogoutTest;
@@ -17,6 +18,7 @@ public class TestManager {
             case Constant.LOG_IN -> new LoginTest(baseUrl, Constant.LOG_IN);
             case Constant.LOG_OUT -> new LogoutTest(baseUrl, Constant.LOG_OUT);
             case Constant.GET_LIST_AUCTIONS -> new GetListAuctionsTest(baseUrl, Constant.GET_LIST_AUCTIONS);
+            case Constant.CREATE_COMMENT -> new CreateCommentTest(baseUrl, Constant.CREATE_COMMENT);
             default -> null;
         };
         if (test == null) return;

@@ -16,10 +16,12 @@ public class LoginUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         String tempEmail = "thanh12345@gmail.com";
+
         this.params.put("email", tempEmail);
         this.params.put("password", "123456");
 
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
+
         this.assertionManager.assertNotEquals(res, null);
         if (res == null) return;
 
@@ -29,8 +31,11 @@ public class LoginUnitTest1 extends UnitTest {
         LoginResponse.Data data = res.data;
         this.assertionManager.assertNotEquals(data, null);
         this.assertionManager.assertInstanceOf(data.access_token, String.class);
+        this.assertionManager.assertBoolean(data.access_token.length() > 0);
         this.assertionManager.assertInstanceOf(data.token_type, String.class);
+        this.assertionManager.assertBoolean(data.token_type.length() > 0);
         this.assertionManager.assertInstanceOf(data.expires_in, String.class);
+        this.assertionManager.assertBoolean(data.expires_in.length() > 0);
 
         User user = res.data.user;
         this.assertionManager.assertNotEquals(user, null);
@@ -39,6 +44,6 @@ public class LoginUnitTest1 extends UnitTest {
         this.assertionManager.assertInstanceOf(user.avatar, String.class);
         this.assertionManager.assertEquals(user.email, tempEmail);
         this.assertionManager.assertInstanceOf(user.phone, String.class);
-        
+
     }
 }

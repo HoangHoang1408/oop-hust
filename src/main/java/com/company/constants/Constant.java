@@ -8,6 +8,7 @@ public class Constant {
     public static final String LOG_IN = "login";
     public static final String LOG_OUT = "logout";
     public static final String GET_LIST_AUCTIONS = "auctions";
+    public static final String CREATE_COMMENT = "comments/create";
     public static HashMap<Integer, String> paths = new HashMap<>();
     public static HashMap<Integer, String> testNames = new HashMap<>();
 
@@ -16,6 +17,7 @@ public class Constant {
         paths.put(2, Constant.LOG_IN);
         paths.put(3, Constant.LOG_OUT);
         paths.put(4, Constant.GET_LIST_AUCTIONS);
+        paths.put(5, Constant.CREATE_COMMENT);
     }
 
     static {
@@ -23,5 +25,6 @@ public class Constant {
         testNames.put(2, "Log in");
         testNames.put(3, "Log out");
         testNames.put(4, "Get list auctions");
+        testNames.put(5, "Create comment");
     }
 }

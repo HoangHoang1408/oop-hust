@@ -17,6 +17,4 @@ public class LoginTest extends Test {
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new LoginUnitTest1(this), new LoginUnitTest2(this), new LoginUnitTest3(this)));
     }
-
-
 }

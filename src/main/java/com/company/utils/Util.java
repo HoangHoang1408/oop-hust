@@ -3,10 +3,6 @@ package com.company.utils;
 import java.util.Random;
 
 public class Util {
-    public static void main(String[] args) {
-        System.out.println(randomNumberString(10));
-    }
-
     public static String randomAlphabetString(int length) {
         int leftLimit = 97;
         int rightLimit = 122;
