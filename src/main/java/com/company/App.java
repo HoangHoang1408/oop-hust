@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.Tests.TestManager;
+import com.company.TestManager.TestManager;
 import com.company.constants.ANSI;
 import com.company.constants.Constant;
 
@@ -69,7 +69,7 @@ public class App {
         }
         System.out.print(ANSI.RESET);
         int testId = getOption("Input api Id (integer):");
-        this.testManager.startTest(Constant.paths.get(testId), this.baseUrl);
+        this.testManager.startTest(testId, this.baseUrl);
     }
 
     private void quitApp() {
