@@ -17,6 +17,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+
+// class chứa các phương thức cần thiết để gửi request đến server
 public class ConnectionUtil {
     private static StringBuilder createQueryString(HashMap<String, String> params) {
         if (params == null) return new StringBuilder();
@@ -81,6 +83,7 @@ public class ConnectionUtil {
         return null;
     }
 
+//    phương thức gửi post request cần dùng ở các class khác
     public static <T> T sendPostRequest(String fullURLString, HashMap<String, String> params, Class<T> cl, String accessToken) throws IOException {
         HttpURLConnection connection = ConnectionUtil.createHttpConnection(fullURLString, HttpMethod.POST, accessToken);
         byte[] requestBytes = createQueryString(params).toString().getBytes(StandardCharsets.UTF_8);
@@ -89,6 +92,8 @@ public class ConnectionUtil {
         return res;
     }
 
+
+//    phương thức gửi get request cần dùng ở các class khác
     public static <T> T sendGetRequest(String fullURLString, HashMap<String, String> params, Class<T> cl, String accessToken) throws IOException {
         HttpURLConnection connection = ConnectionUtil.createHttpConnection(fullURLString + "?" + createQueryString(params), HttpMethod.GET, accessToken);
         T res = getResponseData(connection, null, cl, accessToken);

@@ -2,6 +2,7 @@ package com.company.utils;
 
 import java.util.Random;
 
+// chứa các hàm tiện dụng để tạo data gửi đến server
 public class Util {
     public static String randomAlphabetString(int length) {
         int leftLimit = 97;

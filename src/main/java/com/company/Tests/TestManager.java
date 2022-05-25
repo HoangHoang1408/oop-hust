@@ -10,6 +10,7 @@ import com.company.constants.Constant;
 
 import java.io.IOException;
 
+// quản lí các test và chạy test được chọn khi có yêu cầu
 public class TestManager {
 
     public void startTest(String apiName, BaseURL baseUrl) {

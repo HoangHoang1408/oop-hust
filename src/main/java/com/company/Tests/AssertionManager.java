@@ -2,6 +2,7 @@ package com.company.Tests;
 
 import com.company.constants.ANSI;
 
+// class chứa các phương thức thường dùng để thực hiện việc giả định
 public class AssertionManager {
     private final String expectation;
     private Boolean check;

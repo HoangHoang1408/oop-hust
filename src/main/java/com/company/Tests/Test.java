@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+// chứa các thuộc tính và phương thức cần cho 1 test để chạy (các class test khác phải kế thừa class này)
 public abstract class Test {
     protected String apiName;
     protected BaseURL baseURL;
-    protected String fullURLString;
+    protected String fullURLString; //nên lưu ý thuộc tính này để gửi request nếu url cần phải bổ sung thêm route nhỏ (giá trị ví dụ: https://auctions-app-2.herokuapp.com/api/login)
     protected ArrayList<UnitTest> unitTests;
 
     public Test(BaseURL baseURL, String apiName) {
@@ -26,7 +28,7 @@ public abstract class Test {
         introduceUnitTests();
         executeUnitTests();
     }
-
+//  phương thức này phải đc ghi đề ở class con
     protected void initUnitTests() {
     }
 

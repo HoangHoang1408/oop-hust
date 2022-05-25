@@ -6,6 +6,7 @@ import com.company.constants.Constant;
 
 import java.util.Scanner;
 
+// class chính chứa các hàm thực hiện luồng công việc
 public class App {
     private final BaseURL baseUrl;
     private final TestManager testManager;
@@ -22,12 +23,12 @@ public class App {
     public void start() {
         while (this.running) {
             printOption();
-            switch (getOption("Select option (integer):")) {
-                case 1 -> setBaseUrl();
-                case 2 -> testAPI();
-                case 3 -> quitApp();
+            switch (this.getOption("Select option (integer):")) {
+                case 1 -> this.setBaseUrl();
+                case 2 -> this.testAPI();
+                case 3 -> this.quitApp();
             }
-            int temp = getOption("Continue? (1|0)");
+            int temp = this.getOption("Continue? (1|0)");
             if (temp == 0) this.quitApp();
         }
     }

@@ -21,6 +21,5 @@ public class LoginUnitTest3 extends UnitTest {
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1001);
         this.assertionManager.assertEquals(res.data, null);
-
     }
 }
