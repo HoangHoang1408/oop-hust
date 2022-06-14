@@ -7,4 +7,9 @@ public class ReadNotificationsTest extends Test {
     public ReadNotificationsTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

@@ -7,4 +7,9 @@ public class GetListCategoriesTest extends Test {
     public GetListCategoriesTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

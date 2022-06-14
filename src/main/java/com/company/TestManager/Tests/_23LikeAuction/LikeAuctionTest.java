@@ -7,4 +7,9 @@ public class LikeAuctionTest extends Test {
     public LikeAuctionTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

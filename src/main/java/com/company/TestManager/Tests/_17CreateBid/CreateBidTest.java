@@ -7,4 +7,9 @@ public class CreateBidTest extends Test {
     public CreateBidTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }
