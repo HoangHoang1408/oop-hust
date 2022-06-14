@@ -27,7 +27,7 @@ public abstract class UnitTest {
     //    có thể được gọi ở class con để lấy đc accesstoken
     protected String getAccessToken() throws IOException {
         HashMap<String, String> tempParams = new HashMap<>();
-        tempParams.put("email", "qoobee@gmail.com");
+        tempParams.put("email", "thanh12345@gmail.com");
         tempParams.put("password", "12345678");
         LoginResponse res = ConnectionUtil.sendPostRequest(this.test.baseURL.getBaseURL() + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
         return res.data.access_token;

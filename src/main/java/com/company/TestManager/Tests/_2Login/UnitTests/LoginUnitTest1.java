@@ -19,7 +19,7 @@ public class LoginUnitTest1 extends UnitTest {
         String tempEmail = "thanh12345@gmail.com";
 
         this.params.put("email", tempEmail);
-        this.params.put("password", "123456");
+        this.params.put("password", "12345678");
 
 //        gửi request và truyền vào class của object cần trả về
         LoginResponse res = this.sendPostRequest(LoginResponse.class);

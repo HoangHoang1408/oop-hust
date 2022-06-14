@@ -17,7 +17,7 @@ public class CreateCommentUnitTest2 extends UnitTest {
         this.params.put("content", comment);
         this.params.put("comment_last_id", "10");
 
-        CreateCommentResponse2 res = ConnectionUtil.sendPostRequest(this.fullURLString + "/1", this.params, CreateCommentResponse2.class, this.getAccessToken());
+        CreateCommentResponse2 res = ConnectionUtil.sendPostRequest(this.fullURLString+"/1", this.params, CreateCommentResponse2.class, this.getAccessToken());
 
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1000);
