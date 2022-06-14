@@ -20,8 +20,8 @@ public class CreateCommentUnitTest4 extends UnitTest {
         String accessToken = "djsldfgdfdsfsdgdfwrong214fgjksldfgjsdaNiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3fwpMeJf36POk6yJV_adQssw5cdgjdfgdklzfg";
         CreateCommentResponse2 res = ConnectionUtil.sendPostRequest(this.fullURLString+"/1", this.params, CreateCommentResponse2.class, accessToken);
 
-        this.assertionManager.assertNotEquals(res, null);
+        this.assertionManager.assertEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1004);
-        this.assertionManager.assertNotEquals(res.data, null);
+        this.assertionManager.assertEquals(res.data, null);
     }
 }
