@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._1SignUp.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._1SignUp.SignUpResponse;
+import com.company.TestManager.UnitTest;
 import com.company.utils.Util;
 
 import java.io.IOException;
@@ -22,7 +22,6 @@ public class SignUpUnitTest1 extends UnitTest {
         this.params.put("phone", "0932198999");
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
-
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertInstanceOf(res.message, String.class);
     }

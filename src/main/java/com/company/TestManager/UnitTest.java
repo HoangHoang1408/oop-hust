@@ -60,9 +60,12 @@ public abstract class UnitTest {
     public void test() throws IOException {
     }
 
-    public boolean startUnitTest() throws IOException {
-        this.test();
+    public boolean judge() {
         return this.assertionManager.judge();
+    }
+
+    public void forceFail() {
+        this.assertionManager.forceFail();
     }
 
     public String getExpectation() {

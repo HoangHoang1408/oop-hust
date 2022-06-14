@@ -41,6 +41,10 @@ public class AssertionManager {
         return false;
     }
 
+    public void forceFail() {
+        this.check = false;
+    }
+
     private void notifyTestPassed() {
         System.out.println(ANSI.GREEN + "Unit test: " + this.expectation + " => Passed!" + ANSI.RESET);
     }

@@ -64,7 +64,15 @@ public abstract class Test {
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
         int totalTestsPassed = 0;
         for (int testId : chosenUnitTests) {
-            boolean passed = this.unitTests.get(testId - 1).startUnitTest();
+            boolean passed;
+            UnitTest unitTest = this.unitTests.get(testId - 1);
+            try {
+                unitTest.test();
+            } catch (NullPointerException e) {
+                unitTest.forceFail();
+            } finally {
+                passed = unitTest.judge();
+            }
             if (passed) totalTestsPassed += 1;
         }
         String color = totalTestsPassed == chosenUnitTests.size() ? ANSI.GREEN : ANSI.RED;
