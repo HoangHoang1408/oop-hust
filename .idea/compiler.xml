@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tes2" />
+        <module name="project-for-oop" />
       </profile>
     </annotationProcessing>
   </component>
