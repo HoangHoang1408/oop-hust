@@ -7,4 +7,9 @@ public class ReadNewsTest extends Test {
     public ReadNewsTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

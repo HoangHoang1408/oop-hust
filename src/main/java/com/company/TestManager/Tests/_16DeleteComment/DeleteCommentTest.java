@@ -7,4 +7,9 @@ public class DeleteCommentTest extends Test {
     public DeleteCommentTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

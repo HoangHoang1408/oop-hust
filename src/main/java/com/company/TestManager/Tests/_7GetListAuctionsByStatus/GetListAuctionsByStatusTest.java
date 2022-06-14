@@ -4,7 +4,13 @@ import com.company.BaseURL;
 import com.company.TestManager.Test;
 
 public class GetListAuctionsByStatusTest extends Test {
+
     public GetListAuctionsByStatusTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
+    }
+
+    @Override
+    protected void initUnitTests() {
+        
     }
 }

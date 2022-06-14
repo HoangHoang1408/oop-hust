@@ -7,4 +7,9 @@ public class GetListAuctionsByTypeTest extends Test {
     public GetListAuctionsByTypeTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

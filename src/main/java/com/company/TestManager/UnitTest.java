@@ -57,8 +57,7 @@ public abstract class UnitTest {
     }
 
     //    hàm bắt buộc phải ghi đè ở lớp con
-    public void test() throws IOException {
-    }
+    protected abstract void test() throws IOException;
 
     public boolean judge() {
         return this.assertionManager.judge();

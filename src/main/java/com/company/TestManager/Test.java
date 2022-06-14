@@ -34,8 +34,7 @@ public abstract class Test {
     }
 
     //  phương thức này phải đc ghi đề ở class con
-    protected void initUnitTests() {
-    }
+    protected abstract void initUnitTests();
 
     private void introduceUnitTests() {
         if (unitTests.size() <= 0) return;
@@ -64,16 +63,13 @@ public abstract class Test {
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
         int totalTestsPassed = 0;
         for (int testId : chosenUnitTests) {
-            boolean passed;
             UnitTest unitTest = this.unitTests.get(testId - 1);
             try {
                 unitTest.test();
             } catch (NullPointerException e) {
                 unitTest.forceFail();
-            } finally {
-                passed = unitTest.judge();
             }
-            if (passed) totalTestsPassed += 1;
+            if (unitTest.judge()) totalTestsPassed += 1;
         }
         String color = totalTestsPassed == chosenUnitTests.size() ? ANSI.GREEN : ANSI.RED;
         System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + chosenUnitTests.size() + " tests passed!" + ANSI.RESET);

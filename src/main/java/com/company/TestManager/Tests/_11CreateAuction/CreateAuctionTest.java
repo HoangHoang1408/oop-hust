@@ -7,4 +7,9 @@ public class CreateAuctionTest extends Test {
     public CreateAuctionTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

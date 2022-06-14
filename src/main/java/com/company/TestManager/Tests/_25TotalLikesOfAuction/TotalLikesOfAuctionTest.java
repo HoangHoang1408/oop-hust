@@ -7,4 +7,9 @@ public class TotalLikesOfAuctionTest extends Test {
     public TotalLikesOfAuctionTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }

@@ -7,4 +7,9 @@ public class ContactUsTest extends Test {
     public ContactUsTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
+    @Override
+    protected void initUnitTests() {
+
+    }
 }
