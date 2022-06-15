@@ -49,14 +49,19 @@ public abstract class Test {
     private void executeUnitTests() throws IOException {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> chosenUnitTests = new ArrayList<>();
-        System.out.println("Input unit tests to start testing (end with -1):");
+        System.out.println("Input unit tests to start testing (end with -1) or 0 to test all:");
         while (scanner.hasNextInt()) {
             String input = scanner.next();
             if (input.equals("-1")) break;
             int temp = Integer.parseInt(input);
-            if (temp > this.unitTests.size()) {
+            if (temp > this.unitTests.size() || temp < -1) {
                 System.out.println("Invalid unit test id");
                 continue;
+            }
+            if (temp == 0) {
+                chosenUnitTests.clear();
+                for (int i = 1; i <= this.unitTests.size(); i++) chosenUnitTests.add(i);
+                break;
             }
             chosenUnitTests.add(temp);
         }

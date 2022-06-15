@@ -16,7 +16,7 @@ import com.company.TestManager.Tests._20GetListBrands.GetListBrandsTest;
 import com.company.TestManager.Tests._21AcceptMaxBid.AcceptMaxBidTest;
 import com.company.TestManager.Tests._22ContactUs.ContactUsTest;
 import com.company.TestManager.Tests._23LikeAuction.LikeAuctionTest;
-import com.company.TestManager.Tests._24_GetListLikes.GetListLikesTest;
+import com.company.TestManager.Tests._24GetListLikes.GetListLikesTest;
 import com.company.TestManager.Tests._25TotalLikesOfAuction.TotalLikesOfAuctionTest;
 import com.company.TestManager.Tests._26GetNews.GetNewsTest;
 import com.company.TestManager.Tests._27ReadNews.ReadNewsTest;

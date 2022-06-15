@@ -19,7 +19,13 @@ public class SignUpTest extends Test {
                 new SignUpUnitTest3(this),
                 new SignUpUnitTest4(this),
                 new SignUpUnitTest5(this),
-                new SignUpUnitTest6(this)
+                new SignUpUnitTest6(this),
+                new SignUpUnitTest7(this),
+                new SignUpUnitTest8(this),
+                new SignUpUnitTest9(this),
+                new SignUpUnitTest10(this),
+                new SignUpUnitTest11(this),
+                new SignUpUnitTest12(this)
         ));
     }
 

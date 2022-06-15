@@ -1,4 +1,4 @@
-package com.company.TestManager.Tests._24_GetListLikes;
+package com.company.TestManager.Tests._24GetListLikes;
 
 import com.company.BaseURL;
 import com.company.TestManager.Test;

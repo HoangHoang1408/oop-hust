@@ -29,13 +29,5 @@ public class SignUpUnitTest7 extends UnitTest {
         this.assertionManager.assertEquals(res.code, 1001);
         this.assertionManager.assertEquals(res.data, null);
         this.assertionManager.assertBoolean(res.message.length() > 0);
-
-        this.params.put("address", "");
-        res = this.sendPostRequest(SignUpResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
-
     }
 }
