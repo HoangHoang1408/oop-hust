@@ -52,7 +52,7 @@ public abstract class Test {
 
     private void executeUnitTests() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Integer> chosenUnitTests = new ArrayList<>();
+        ArrayList<Integer> chosenUnitTestList = new ArrayList<>();
         System.out.println("Input unit tests to start testing (end with -1) or 0 to test all:");
         while (scanner.hasNextInt()) {
             String input = scanner.next();
@@ -63,25 +63,32 @@ public abstract class Test {
                 continue;
             }
             if (temp == 0) {
-                chosenUnitTests.clear();
-                for (int i = 1; i <= this.unitTests.size(); i++) chosenUnitTests.add(i);
+                chosenUnitTestList.clear();
+                for (int i = 1; i <= this.unitTests.size(); i++) chosenUnitTestList.add(i);
                 break;
             }
-            chosenUnitTests.add(temp);
+            chosenUnitTestList.add(temp);
         }
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
         int totalTestsPassed = 0;
-        for (int testId : chosenUnitTests) {
+        ArrayList<String> failedTestList = new ArrayList<>();
+        for (Integer testId : chosenUnitTestList) {
             UnitTest unitTest = this.unitTests.get(testId - 1);
             try {
                 unitTest.test();
             } catch (NullPointerException e) {
                 unitTest.forceFail();
             }
-            if (unitTest.judge()) totalTestsPassed += 1;
+            if (unitTest.judge(testId)) {
+                totalTestsPassed += 1;
+            } else {
+                failedTestList.add(testId.toString());
+            }
         }
-        String color = totalTestsPassed == chosenUnitTests.size() ? ANSI.GREEN : ANSI.RED;
-        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + chosenUnitTests.size() + " tests passed!" + ANSI.RESET);
+        String color = totalTestsPassed == chosenUnitTestList.size() ? ANSI.GREEN : ANSI.RED;
+        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + chosenUnitTestList.size() + " tests passed!" + ANSI.RESET);
+        if (failedTestList.size() <= 0) return;
+        System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
     }
 
     public String getFullURLString() {

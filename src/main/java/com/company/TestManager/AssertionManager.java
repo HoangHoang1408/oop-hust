@@ -32,12 +32,12 @@ public class AssertionManager {
         this.check = a;
     }
 
-    public boolean judge() {
+    public boolean judge(int i) {
         if (check) {
-            notifyTestPassed();
+            notifyTestPassed(i);
             return true;
         }
-        notifyTestFailed();
+        notifyTestFailed(i);
         return false;
     }
 
@@ -45,11 +45,11 @@ public class AssertionManager {
         this.check = false;
     }
 
-    private void notifyTestPassed() {
-        System.out.println(ANSI.GREEN + "Unit test: " + this.expectation + " => Passed!" + ANSI.RESET);
+    private void notifyTestPassed(int i) {
+        System.out.println(ANSI.GREEN + i + ") " + this.expectation + " => Passed!" + ANSI.RESET);
     }
 
-    private void notifyTestFailed() {
-        System.out.println(ANSI.RED + "Unit test: " + this.expectation + " => Failed!" + ANSI.RESET);
+    private void notifyTestFailed(int i) {
+        System.out.println(ANSI.RED + i + ") " + this.expectation + " => Failed!" + ANSI.RESET);
     }
 }
