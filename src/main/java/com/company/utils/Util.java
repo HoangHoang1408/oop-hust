@@ -16,13 +16,17 @@ public class Util {
         return buffer.toString();
     }
 
-    public static String randomNumberString(int length) {
+    public static String randomNumberString(int length, int lowerBound, int upperBound) {
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
-            int randomLimitedInt = (int) (random.nextFloat() * (10));
+            int randomLimitedInt = (int) (random.nextFloat() * (upperBound - lowerBound + 1)) + lowerBound;
             buffer.append(randomLimitedInt);
         }
         return buffer.toString();
+    }
+
+    public static String randomNumberString(int length) {
+        return Util.randomNumberString(length, 0, 9);
     }
 }
