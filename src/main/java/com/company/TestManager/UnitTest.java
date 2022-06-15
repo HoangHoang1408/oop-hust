@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 // abstract class của các test (các class unit test khác phải kế thừa class này)
 public abstract class UnitTest {
-    protected final Test test;
+    private final Test test;
     protected String expectation;
     protected HashMap<String, String> params;
     protected String fullURLString;

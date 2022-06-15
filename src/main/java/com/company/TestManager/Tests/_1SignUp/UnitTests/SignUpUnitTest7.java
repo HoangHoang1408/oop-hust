@@ -10,19 +10,13 @@ import java.io.IOException;
 public class SignUpUnitTest7 extends UnitTest {
 
     public SignUpUnitTest7(Test test) {
-        super(test, "Can not sign up with more than 255 characters in address or empty address");
+        super(test, "Can not sign up with more than 255 characters");
     }
 
     @Override
     protected void test() throws IOException {
-        String password = "1231231234";
-
-        this.params.put("email", Util.randomAlphabetString(10) + "@gmail.com");
-        this.params.put("password", password);
-        this.params.put("re_pass", password);
-        this.params.put("name", Util.randomAlphabetString(10));
-        this.params.put("address", Util.randomAlphabetString(260));
-        this.params.put("phone", Util.randomNumberString(10));
+        this.params = this.generateDefaultParams();
+        this.params.put("address", Util.randomAlphabetOrNumberString(130, 130));
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);

@@ -14,8 +14,8 @@ public class SignUpUnitTest4 extends UnitTest {
 
     @Override
     protected void test() throws IOException {
-        this.params = this.test.generateDefaultParams();
-
+        this.params = this.generateDefaultParams();
+        this.params.put("name", "");
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1001);
