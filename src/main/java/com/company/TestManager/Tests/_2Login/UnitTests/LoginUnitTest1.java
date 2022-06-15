@@ -17,7 +17,6 @@ public class LoginUnitTest1 extends UnitTest {
     public void test() throws IOException {
 //        truyền các params để gọi request đến server
         String tempEmail = "thanh12345@gmail.com";
-
         this.params.put("email", tempEmail);
         this.params.put("password", "12345678");
 
@@ -33,6 +32,7 @@ public class LoginUnitTest1 extends UnitTest {
 
         LoginResponse.Data data = res.data;
         this.assertionManager.assertNotEquals(data, null);
+        if (data == null) return;
         this.assertionManager.assertInstanceOf(data.access_token, String.class);
         this.assertionManager.assertBoolean(data.access_token.length() > 0);
         this.assertionManager.assertInstanceOf(data.token_type, String.class);
