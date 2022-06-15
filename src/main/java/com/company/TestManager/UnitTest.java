@@ -24,6 +24,10 @@ public abstract class UnitTest {
         this.assertionManager = new AssertionManager(expectation);
     }
 
+    protected HashMap<String, String> generateDefaultParams() {
+        return this.test.generateDefaultParams();
+    }
+
     //    có thể được gọi ở class con để lấy đc accesstoken
     protected String getAccessToken() throws IOException {
         HashMap<String, String> tempParams = new HashMap<>();

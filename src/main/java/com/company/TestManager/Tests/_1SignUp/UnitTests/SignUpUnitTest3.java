@@ -15,15 +15,8 @@ public class SignUpUnitTest3 extends UnitTest {
 
     @Override
     protected void test() throws IOException {
-        String password = "1231231234";
-        String phone = Util.randomNumberString(10);
-
-        this.params.put("email", Util.randomAlphabetString(10) + "@gmail.com");
-        this.params.put("password", password);
-        this.params.put("re_pass", password);
-        this.params.put("name", Util.randomAlphabetString(260));
-        this.params.put("phone", phone);
-
+        this.params = this.generateDefaultParams();
+        this.params.put("name", Util.randomAlphabetString(269));
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1001);

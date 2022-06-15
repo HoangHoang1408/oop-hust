@@ -3,13 +3,17 @@ package com.company.TestManager.Tests._1SignUp;
 import com.company.BaseURL;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._1SignUp.UnitTests.*;
+import com.company.utils.Util;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SignUpTest extends Test {
     public SignUpTest(BaseURL baseURL, String apiName) {
         super(baseURL, apiName);
     }
+
 
     @Override
     protected void initUnitTests() {
@@ -29,5 +33,20 @@ public class SignUpTest extends Test {
         ));
     }
 
-
+    @Override
+    public HashMap<String, String> generateDefaultParams() {
+        String email = Util.randomAlphabetOrNumberString(8, 0) + "@gmail.com";
+        String password = Util.randomAlphabetOrNumberString(6, 4);
+        String name = Util.randomAlphabetString(6);
+        String phone = Util.randomNumberString(10);
+        String address = Util.randomAlphabetOrNumberString(6, 6);
+        return new HashMap<>(Map.of(
+                "email", email,
+                "password", password,
+                "re_pass", password,
+                "name", name,
+                "phone", phone,
+                "address", address
+        ));
+    }
 }

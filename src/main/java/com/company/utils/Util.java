@@ -1,5 +1,8 @@
 package com.company.utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 // chứa các hàm tiện dụng để tạo data gửi đến server
@@ -28,6 +31,13 @@ public class Util {
             buffer.append(randomLimitedInt);
         }
         return buffer.toString();
+    }
+
+    public static String randomAlphabetOrNumberString(int numOfAlphabetCharacters, int numOfNumberCharacters) {
+        String temp0 = randomNumberString(numOfNumberCharacters) + randomAlphabetString(numOfAlphabetCharacters);
+        List<String> temp = new ArrayList<>(List.of(temp0.split("")));
+        Collections.shuffle(temp);
+        return String.join("", temp);
     }
 
     public static String randomNumberString(int length) {

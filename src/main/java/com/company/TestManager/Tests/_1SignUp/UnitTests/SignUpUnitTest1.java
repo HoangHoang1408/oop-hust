@@ -1,9 +1,9 @@
 package com.company.TestManager.Tests._1SignUp.UnitTests;
 
+import com.company.TestManager.Objects.User;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._1SignUp.SignUpResponse;
 import com.company.TestManager.UnitTest;
-import com.company.utils.Util;
 
 import java.io.IOException;
 
@@ -15,14 +15,21 @@ public class SignUpUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         //        create request object
-        this.params.put("email", Util.randomAlphabetString(8) + "@gmail.com");
-        this.params.put("password", "12345678");
-        this.params.put("re_pass", "12345678");
-        this.params.put("name", "hoang");
-        this.params.put("phone", "0932198999");
-        this.params.put("address", "test address");
+        this.params = this.generateDefaultParams();
+
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
+        this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
+        this.assertionManager.assertBoolean(res.message.length() > 0);
+
+
+        User user = res.data;
+        this.assertionManager.assertNotEquals(user, null);
+        this.assertionManager.assertEquals(user.name, this.params.get("name"));
+        this.assertionManager.assertEquals(user.role, "2");
+        this.assertionManager.assertBoolean(user.avatar.length() > 0);
+        this.assertionManager.assertEquals(user.address, this.params.get("address"));
+        this.assertionManager.assertEquals(user.email, this.params.get("email"));
+        this.assertionManager.assertEquals(user.phone, this.params.get("phone"));
     }
 }

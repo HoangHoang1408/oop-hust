@@ -20,7 +20,7 @@ public class SignUpUnitTest5 extends UnitTest {
         this.params.put("email", Util.randomAlphabetString(10) + "@gmail.com");
         this.params.put("password", password);
         this.params.put("re_pass", password);
-        this.params.put("name", "");
+        this.params.put("name", Util.randomAlphabetString(10));
         this.params.put("phone", phone);
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);

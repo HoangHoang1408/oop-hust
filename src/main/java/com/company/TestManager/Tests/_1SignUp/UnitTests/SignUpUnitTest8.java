@@ -20,7 +20,7 @@ public class SignUpUnitTest8 extends UnitTest {
         this.params.put("password", password);
         this.params.put("re_pass", password);
         this.params.put("name", Util.randomAlphabetString(10));
-        this.params.put("phone", "");
+        this.params.put("phone", Util.randomNumberString(10));
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);
