@@ -13,12 +13,10 @@ public class CreateAuctionUnitTest11 extends UnitTest {
 
     @Override
     public void test() throws IOException {
-        this.params.put("category_id", "5");
-        this.params.put("start_date", "2023-06-20 11:03:38");
-        this.params.put("end_date", "2023-06-30 11:03:38 ");
-        this.params.put("title_ni", "bao lo LUOIVUITUOI");
-
+        this.params = this.generateDefaultParams();
+        CreateAuctionResponse resTest = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
         CreateAuctionResponse res = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
+
         this.assertionManager.assertEquals(res.code, 1001);
         this.assertionManager.assertInstanceOf(res.message, String.class);
         this.assertionManager.assertEquals(res.data, null);
