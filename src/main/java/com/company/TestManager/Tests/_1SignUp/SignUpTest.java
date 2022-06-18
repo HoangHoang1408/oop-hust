@@ -14,6 +14,21 @@ public class SignUpTest extends Test {
         super(baseURL, apiName);
     }
 
+    public static HashMap<String, String> generateDefaultParams() {
+        String email = Util.randomAlphabetOrNumberString(8, 0) + "@gmail.com";
+        String password = Util.randomAlphabetOrNumberString(6, 4);
+        String name = Util.randomAlphabetString(6);
+        String phone = Util.randomNumberString(10);
+        String address = Util.randomAlphabetOrNumberString(6, 6);
+        return new HashMap<>(Map.of(
+                "email", email,
+                "password", password,
+                "re_pass", password,
+                "name", name,
+                "phone", phone,
+                "address", address
+        ));
+    }
 
     @Override
     protected void initUnitTests() {
@@ -30,23 +45,6 @@ public class SignUpTest extends Test {
                 new SignUpUnitTest10(this),
                 new SignUpUnitTest11(this),
                 new SignUpUnitTest12(this)
-        ));
-    }
-
-    @Override
-    public HashMap<String, String> generateDefaultParams() {
-        String email = Util.randomAlphabetOrNumberString(8, 0) + "@gmail.com";
-        String password = Util.randomAlphabetOrNumberString(6, 4);
-        String name = Util.randomAlphabetString(6);
-        String phone = Util.randomNumberString(10);
-        String address = Util.randomAlphabetOrNumberString(6, 6);
-        return new HashMap<>(Map.of(
-                "email", email,
-                "password", password,
-                "re_pass", password,
-                "name", name,
-                "phone", phone,
-                "address", address
         ));
     }
 }

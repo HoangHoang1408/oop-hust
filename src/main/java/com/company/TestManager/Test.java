@@ -5,7 +5,6 @@ import com.company.constants.ANSI;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -21,10 +20,6 @@ public abstract class Test {
         this.apiName = apiName;
         this.fullURLString = baseURL.getBaseURL() + '/' + apiName;
         this.unitTests = new ArrayList<>();
-    }
-
-    public HashMap<String, String> generateDefaultParams() {
-        return new HashMap<>();
     }
 
     protected void startTest() throws IOException {

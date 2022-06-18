@@ -2,9 +2,7 @@ package com.company.TestManager.Tests._2Login;
 
 import com.company.BaseURL;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._2Login.UnitTests.LoginUnitTest1;
-import com.company.TestManager.Tests._2Login.UnitTests.LoginUnitTest2;
-import com.company.TestManager.Tests._2Login.UnitTests.LoginUnitTest3;
+import com.company.TestManager.Tests._2Login.UnitTests.*;
 
 import java.util.List;
 
@@ -17,6 +15,12 @@ public class LoginTest extends Test {
     @Override
 //    phương thức cần phải ghi đè từ phương thức của class cha
     protected void initUnitTests() {
-        this.unitTests.addAll(List.of(new LoginUnitTest1(this), new LoginUnitTest2(this), new LoginUnitTest3(this)));
+        this.unitTests.addAll(List.of(
+                new LoginUnitTest1(this),
+                new LoginUnitTest2(this),
+                new LoginUnitTest3(this),
+                new LoginUnitTest4(this),
+                new LoginUnitTest5(this)
+        ));
     }
 }

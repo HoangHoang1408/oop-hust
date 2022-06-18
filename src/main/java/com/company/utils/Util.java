@@ -7,9 +7,11 @@ import java.util.Random;
 
 // chứa các hàm tiện dụng để tạo data gửi đến server
 public class Util {
-//    public static void main(String[] args) {
-//        System.out.printf(Util.randomNumberString(4, 1, 7));
-//    }
+    public static void main(String[] args) {
+        String a = "hello";
+        System.out.println(String.class);
+        System.out.println(a.getClass());
+    }
 
     public static String randomAlphabetString(int length) {
         int leftLimit = 97;

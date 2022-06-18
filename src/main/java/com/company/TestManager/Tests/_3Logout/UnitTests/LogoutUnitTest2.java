@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._3Logout.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._3Logout.LogoutResponse;
+import com.company.TestManager.UnitTest;
 import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
@@ -18,7 +18,6 @@ public class LogoutUnitTest2 extends UnitTest {
         LogoutResponse res = ConnectionUtil.sendPostRequest(this.fullURLString, this.params, LogoutResponse.class, accessToken);
         this.assertionManager.assertEquals(res.code, 1004);
         this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
         this.assertionManager.assertBoolean(res.message.length() > 0);
     }
 }

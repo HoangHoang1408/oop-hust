@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._3Logout.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._3Logout.LogoutResponse;
+import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
@@ -15,8 +15,7 @@ public class LogoutUnitTest1 extends UnitTest {
     public void test() throws IOException {
         LogoutResponse res = this.sendPostRequestWithAccessToken(LogoutResponse.class);
         this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertNotEquals(res.message, "");
+        this.assertionManager.assertBoolean(res.message.length() > 0);
         this.assertionManager.assertEquals(res.data, null);
     }
 }

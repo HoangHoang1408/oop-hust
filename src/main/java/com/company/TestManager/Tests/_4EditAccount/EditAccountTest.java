@@ -14,15 +14,7 @@ public class EditAccountTest extends Test {
         super(baseURL, apiName);
     }
 
-    @Override
-    protected void initUnitTests() {
-        this.unitTests.addAll(List.of(new EditAccountUnitTest1(this), new EditAccountUnitTest2(this), new EditAccountUnitTest3(this), new EditAccountUnitTest4(this),
-                new EditAccountUnitTest5(this), new EditAccountUnitTest6(this), new EditAccountUnitTest7(this), new EditAccountUnitTest8(this),
-                new EditAccountUnitTest9(this), new EditAccountUnitTest10(this), new EditAccountUnitTest11(this), new EditAccountUnitTest12(this),
-                new EditAccountUnitTest13(this), new EditAccountUnitTest14(this), new EditAccountUnitTest15(this)));
-    }
-    @Override
-    public HashMap<String, String> generateDefaultParams() {
+    public static HashMap<String, String> generateDefaultParams() {
         String email = Util.randomAlphabetOrNumberString(8, 0) + "@gmail.com";
         String password = Util.randomAlphabetOrNumberString(6, 4);
         String name = Util.randomAlphabetString(6);
@@ -36,5 +28,13 @@ public class EditAccountTest extends Test {
                 "phone", phone,
                 "address", address
         ));
+    }
+
+    @Override
+    protected void initUnitTests() {
+        this.unitTests.addAll(List.of(new EditAccountUnitTest1(this), new EditAccountUnitTest2(this), new EditAccountUnitTest3(this), new EditAccountUnitTest4(this),
+                new EditAccountUnitTest5(this), new EditAccountUnitTest6(this), new EditAccountUnitTest7(this), new EditAccountUnitTest8(this),
+                new EditAccountUnitTest9(this), new EditAccountUnitTest10(this), new EditAccountUnitTest11(this), new EditAccountUnitTest12(this),
+                new EditAccountUnitTest13(this), new EditAccountUnitTest14(this), new EditAccountUnitTest15(this)));
     }
 }

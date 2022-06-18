@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._1SignUp.UnitTests;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._1SignUp.SignUpResponse;
+import com.company.TestManager.Tests._1SignUp.SignUpTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class SignUpUnitTest11 extends UnitTest {
 
     @Override
     protected void test() throws IOException {
-        this.params = this.generateDefaultParams();
+        this.params = SignUpTest.generateDefaultParams();
         this.params.put("re_pass", null);
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);

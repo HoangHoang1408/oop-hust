@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._11CreateAuction.UnitTest;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._11CreateAuction.CreateAuctionResponse;
+import com.company.TestManager.Tests._11CreateAuction.CreateAuctionTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class CreateAuctionUnitTest11 extends UnitTest {
 
     @Override
     public void test() throws IOException {
-        this.params = this.generateDefaultParams();
+        this.params = CreateAuctionTest.generateDefaultParams();
         CreateAuctionResponse resTest = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
         CreateAuctionResponse res = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
 
