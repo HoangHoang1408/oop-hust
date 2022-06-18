@@ -10,7 +10,7 @@ public class Constant {
     public static final String LOG_OUT = "logout";
     public static final String EDIT_ACCOUNT = "edit";
     public static final String SEARCH = "search";
-    public static final String GET_LIST_AUCTIONS = "auctions";
+    public static final String GET_LIST_AUCTIONS = "auctions/listAuctions";
     public static final String GET_LIST_AUCTIONS_BY_STATUS = "auctions/listAuctionsByStatus";
     public static final String GET_LIST_AUCTIONS_BY_USER = "auctions/listAuctionsByUser";
     public static final String GET_LIST_AUCTIONS_BY_TYPE = "auctions/listAuctions";

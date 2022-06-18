@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._1SignUp.UnitTests;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._1SignUp.SignUpResponse;
+import com.company.TestManager.Tests._1SignUp.SignUpTest;
 import com.company.TestManager.UnitTest;
 import com.company.utils.Util;
 
@@ -15,7 +16,7 @@ public class SignUpUnitTest3 extends UnitTest {
 
     @Override
     protected void test() throws IOException {
-        this.params = this.generateDefaultParams();
+        this.params = SignUpTest.generateDefaultParams();
         this.params.put("name", Util.randomAlphabetString(269));
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);

@@ -3,6 +3,7 @@ package com.company.TestManager.Tests._1SignUp.UnitTests;
 import com.company.TestManager.Objects.User;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._1SignUp.SignUpResponse;
+import com.company.TestManager.Tests._1SignUp.SignUpTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class SignUpUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         //        create request object
-        this.params = this.generateDefaultParams();
+        this.params = SignUpTest.generateDefaultParams();
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
         this.assertionManager.assertNotEquals(res, null);

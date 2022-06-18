@@ -24,9 +24,6 @@ public abstract class UnitTest {
         this.assertionManager = new AssertionManager(expectation);
     }
 
-    public HashMap<String, String> generateDefaultParams() {
-        return this.test.generateDefaultParams();
-    }
 
     //    có thể được gọi ở class con để lấy đc accesstoken
     protected String getAccessToken() throws IOException {
@@ -44,7 +41,7 @@ public abstract class UnitTest {
 
 
     //    thường đc gọi ở class con để gửi post request (có kèm access token)
-    public  <T> T sendPostRequestWithAccessToken(Class<T> cl) throws IOException {
+    public <T> T sendPostRequestWithAccessToken(Class<T> cl) throws IOException {
         String accessToken = this.getAccessToken();
         return ConnectionUtil.sendPostRequest(this.fullURLString, this.params, cl, accessToken);
     }

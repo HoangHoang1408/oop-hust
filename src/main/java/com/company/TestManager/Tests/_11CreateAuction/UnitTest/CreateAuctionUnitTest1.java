@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._11CreateAuction.UnitTest;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._11CreateAuction.CreateAuctionResponse;
+import com.company.TestManager.Tests._11CreateAuction.CreateAuctionTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class CreateAuctionUnitTest1 extends UnitTest {
 
     @Override
     public void test() throws IOException {
-        this.params = this.generateDefaultParams();
+        this.params = CreateAuctionTest.generateDefaultParams();
 
         CreateAuctionResponse res = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
         this.assertionManager.assertNotEquals(res, null);
@@ -22,6 +23,6 @@ public class CreateAuctionUnitTest1 extends UnitTest {
         this.assertionManager.assertNotEquals(res.data, null);
 
 
-}
+    }
 
 }
