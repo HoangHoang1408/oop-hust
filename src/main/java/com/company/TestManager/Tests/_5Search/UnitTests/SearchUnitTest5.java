@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._5Search.UnitTests;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._5Search.SearchResponse;
+import com.company.TestManager.Tests._5Search.SearchTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class SearchUnitTest5 extends UnitTest {
     @Override
     protected void test() throws IOException {
         this.params.put("type", "1");
-        this.params.put("key", "90");
+        this.params.put("key", SearchTest.testItemData.starting_price);
         SearchResponse res = this.sendGetRequest(SearchResponse.class);
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1000);

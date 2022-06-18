@@ -2,6 +2,7 @@ package com.company.TestManager.Tests._5Search.UnitTests;
 
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._5Search.SearchResponse;
+import com.company.TestManager.Tests._5Search.SearchTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -14,8 +15,8 @@ public class SearchUnitTest1 extends UnitTest {
     @Override
     protected void test() throws IOException {
         this.params.put("type", "4");
-        this.params.put("key", "Camera");
-        SearchResponse res = this.sendGetRequestWithAccessToken(SearchResponse.class);
+        this.params.put("key", SearchTest.testAuctionData.title);
+        SearchResponse res = this.sendGetRequest(SearchResponse.class);
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertBoolean(res.message.length() > 0);

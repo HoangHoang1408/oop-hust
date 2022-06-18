@@ -23,6 +23,7 @@ public abstract class Test {
     }
 
     protected void startTest() throws IOException {
+        System.out.println(ANSI.YELLOW + "Initializing unit tests..." + ANSI.RESET);
         beforeAll();
         initUnitTests();
         introduceUnitTests();

@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SearchUnitTest6 extends UnitTest {
     public SearchUnitTest6(Test test) {
-        super(test, "Can not search for auctions with wrong starting price (type = 1)");
+        super(test, "Empty result when searching for auctions with wrong starting price (type = 1)");
     }
 
     @Override
