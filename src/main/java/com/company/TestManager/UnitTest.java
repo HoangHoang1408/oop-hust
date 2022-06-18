@@ -1,7 +1,5 @@
 package com.company.TestManager;
 
-import com.company.TestManager.Tests._2Login.LoginResponse;
-import com.company.constants.Constant;
 import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
@@ -14,24 +12,22 @@ public abstract class UnitTest {
     protected String expectation;
     protected HashMap<String, String> params;
     protected String fullURLString;
+    protected String baseURLString;
     protected AssertionManager assertionManager;
 
     public UnitTest(Test test, String expectation) {
         this.params = new HashMap<>();
         this.test = test;
         this.fullURLString = this.test.getFullURLString();
+        this.baseURLString = this.test.getBaseUrlString();
         this.expectation = expectation;
         this.assertionManager = new AssertionManager(expectation);
     }
 
 
     //    có thể được gọi ở class con để lấy đc accesstoken
-    protected String getAccessToken() throws IOException {
-        HashMap<String, String> tempParams = new HashMap<>();
-        tempParams.put("email", "Cube@gmail.com");
-        tempParams.put("password", "12345678");
-        LoginResponse res = ConnectionUtil.sendPostRequest(this.test.baseURL.getBaseURL() + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
-        return res.data.access_token;
+    protected String getAccessToken() {
+        return ConnectionUtil.getAccessToken();
     }
 
     //    thường đc gọi ở class con để gửi post request (ko kèm access token)

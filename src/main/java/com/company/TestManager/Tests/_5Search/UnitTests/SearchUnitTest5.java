@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SearchUnitTest5 extends UnitTest {
     public SearchUnitTest5(Test test) {
-        super(test, "Can find auction with correct starting price");
+        super(test, "Can search for auctions with correct starting price (type = 1)");
     }
 
     @Override

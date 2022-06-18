@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SearchUnitTest3 extends UnitTest {
     public SearchUnitTest3(Test test) {
-        super(test, "Can search for existed auctions by start time (type = 2)");
+        super(test, "Can search for existed auctions by starting time (type = 2)");
     }
 
     @Override

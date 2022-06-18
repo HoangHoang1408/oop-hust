@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SearchUnitTest2 extends UnitTest {
     public SearchUnitTest2(Test test) {
-        super(test, "Empty result when search for auction names doesnt exist (type = 4)");
+        super(test, "Empty result when searching for auction names doesnt exist (type = 4)");
     }
 
     @Override
