@@ -59,7 +59,7 @@ public class ConnectionUtil {
             content.append(line);
             content.append(System.lineSeparator());
         }
-        System.out.println(content);
+//        System.out.println(content);
         in.close();
         try {
             return new Gson().fromJson(content.toString(), cl);

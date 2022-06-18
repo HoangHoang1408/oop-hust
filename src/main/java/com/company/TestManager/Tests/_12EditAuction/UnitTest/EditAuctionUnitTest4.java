@@ -19,7 +19,7 @@ public class EditAuctionUnitTest4 extends UnitTest  {
         this.params.put("title_ni","Túi sách đã được chỉnh sửa của" + Util.randomAlphabetString(5));
 
 
-        EditAuctionResponse resEdit = ConnectionUtil.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(2, 1, 9), this.params, EditAuctionResponse.class, this.getAccessToken());
+        EditAuctionResponse resEdit = ConnectionUtil.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(1, 54, 58), this.params, EditAuctionResponse.class, this.getAccessToken());
 
         this.assertionManager.assertNotEquals(resEdit, null);
         this.assertionManager.assertEquals(resEdit.code, 1006);

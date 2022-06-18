@@ -2,10 +2,7 @@ package com.company.TestManager.Tests._12EditAuction;
 
 import com.company.BaseURL;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._12EditAuction.UnitTest.EditAuctionUnitTest1;
-import com.company.TestManager.Tests._12EditAuction.UnitTest.EditAuctionUnitTest2;
-import com.company.TestManager.Tests._12EditAuction.UnitTest.EditAuctionUnitTest3;
-import com.company.TestManager.Tests._12EditAuction.UnitTest.EditAuctionUnitTest4;
+import com.company.TestManager.Tests._12EditAuction.UnitTest.*;
 import com.company.utils.Util;
 
 import java.util.HashMap;
@@ -20,7 +17,9 @@ public class EditAuctionTest extends Test {
     @Override
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new EditAuctionUnitTest1(this), new EditAuctionUnitTest2(this),new EditAuctionUnitTest3(this),
-                new EditAuctionUnitTest4(this)));
+                new EditAuctionUnitTest4(this),new EditAuctionUnitTest5(this), new EditAuctionUnitTest6(this),new EditAuctionUnitTest7(this),
+                new EditAuctionUnitTest8(this), new EditAuctionUnitTest9(this),new EditAuctionUnitTest10(this),new EditAuctionUnitTest11(this),
+                new EditAuctionUnitTest12(this),new EditAuctionUnitTest13(this)));
     }
     @Override
     public HashMap<String, String> generateDefaultParams() {
