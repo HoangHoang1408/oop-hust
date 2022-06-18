@@ -40,6 +40,7 @@ public class SearchTest extends Test {
                 "end_date", TempParams.end_date,
                 "title_ni", TempParams.title_ni
         ));
+        System.out.println(this.baseURLString + "/" + Constant.CREATE_AUCTION);
         ConnectionUtil.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, tempParams, CreateAuctionResponse.class, ConnectionUtil.getAccessToken());
     }
 
