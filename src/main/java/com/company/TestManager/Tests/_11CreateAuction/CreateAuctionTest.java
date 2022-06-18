@@ -23,7 +23,7 @@ public class CreateAuctionTest extends Test {
                                        new CreateAuctionUnitTest10(this), new CreateAuctionUnitTest11(this)));
     }
     @Override
-    public HashMap<String, String> generateDefaultParams() {
+    public  HashMap<String, String> generateDefaultParams() {
 
         String category_id = Util.randomNumberString(1, 1, 7);
         String start_date = "2023-06-20 11:03:38";
