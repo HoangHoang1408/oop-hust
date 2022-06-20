@@ -14,8 +14,8 @@ public class SearchUnitTest2 extends UnitTest {
     @Override
     protected void test() throws IOException {
         this.params.put("type", "4");
-        this.params.put("key", "hflsjlfl");
-        SearchResponse res = this.sendGetRequestWithAccessToken(SearchResponse.class);
+        this.params.put("key", "sklfskf");
+        SearchResponse res = this.sendGetRequest(SearchResponse.class);
         this.assertionManager.assertNotEquals(res, null);
         this.assertionManager.assertEquals(res.code, 9998);
         this.assertionManager.assertBoolean(res.message.length() > 0);

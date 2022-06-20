@@ -11,18 +11,19 @@ import java.util.Scanner;
 // chứa các thuộc tính và phương thức cần cho 1 test để chạy (các class test khác phải kế thừa class này)
 public abstract class Test {
     protected String apiName;
-    protected BaseURL baseURLString;
+    protected String baseURLString;
     protected String fullURLString; //nên lưu ý thuộc tính này để gửi request nếu url cần phải bổ sung thêm route nhỏ (giá trị ví dụ: https://auctions-app-2.herokuapp.com/api/login)
     protected ArrayList<UnitTest> unitTests;
 
-    public Test(BaseURL baseURLString, String apiName) {
-        this.baseURLString = baseURLString;
+    public Test(BaseURL baseURLObject, String apiName) {
+        this.baseURLString = baseURLObject.getBaseURL();
         this.apiName = apiName;
-        this.fullURLString = baseURLString.getBaseURL() + '/' + apiName;
+        this.fullURLString = baseURLObject.getBaseURL() + '/' + apiName;
         this.unitTests = new ArrayList<>();
     }
 
     protected void startTest() throws IOException {
+        System.out.println(ANSI.YELLOW + "Initializing unit tests..." + ANSI.RESET);
         beforeAll();
         initUnitTests();
         introduceUnitTests();
@@ -95,6 +96,6 @@ public abstract class Test {
     }
 
     public String getBaseUrlString() {
-        return baseURLString.getBaseURL();
+        return baseURLString;
     }
 }
