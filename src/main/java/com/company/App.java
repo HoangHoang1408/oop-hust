@@ -21,12 +21,16 @@ public class App {
     }
 
     public void start() {
+        tag:
         while (this.running) {
             printOption();
             switch (this.getOption("Select option (integer):")) {
                 case 1 -> this.setBaseUrl();
                 case 2 -> this.testAPI();
-                case 3 -> this.quitApp();
+                case 3 -> {
+                    this.quitApp();
+                    break tag;
+                }
             }
             int temp = this.getOption("Continue? (1|0)");
             if (temp == 0) this.quitApp();

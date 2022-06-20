@@ -33,8 +33,6 @@ import com.company.TestManager.Tests._8GetListAuctionsByUser.GetListAuctionsByUs
 import com.company.TestManager.Tests._9GetListAuctionsByType.GetListAuctionsByTypeTest;
 import com.company.constants.Constant;
 
-import java.io.IOException;
-
 // quản lí các test và chạy test được chọn khi có yêu cầu
 public class TestManager {
 
@@ -73,11 +71,7 @@ public class TestManager {
             default -> null;
         };
         if (test == null) return;
-        try {
-            test.startTest();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Somethings went wrong, try again later!");
-        }
+        test.startTest();
+
     }
 }

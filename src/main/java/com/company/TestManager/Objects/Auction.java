@@ -9,4 +9,6 @@ public class Auction {
     public String statusId;
     public String status;
     public Category category;
+
+    
 }

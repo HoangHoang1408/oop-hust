@@ -7,4 +7,5 @@ public class User {
     public String address;
     public String avatar;
     public String role;
+    public String user_id;
 }

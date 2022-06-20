@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._6GetListAuctions.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
+import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class GetListAuctionsUnitTest1 extends UnitTest {
         String count = "5";
         this.params.put("index", index);
         this.params.put("count", count);
-        GetListAuctionsResponse res = this.sendGetRequestWithAccessToken(GetListAuctionsResponse.class);
+        GetListAuctionsResponse res = this.sendGetRequest(GetListAuctionsResponse.class);
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
     }

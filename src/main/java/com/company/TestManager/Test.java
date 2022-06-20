@@ -22,9 +22,17 @@ public abstract class Test {
         this.unitTests = new ArrayList<>();
     }
 
-    protected void startTest() throws IOException {
+    protected void startTest() {
         System.out.println(ANSI.YELLOW + "Initializing unit tests..." + ANSI.RESET);
-        beforeAll();
+        try {
+            beforeAll();
+        } catch (IOException e) {
+//                TODO: sau cần phải comment out cái này
+            System.out.println(e.getMessage());
+            System.out.println(ANSI.RED + "Can not initialize test!");
+            System.out.println("Try again later" + ANSI.RESET);
+            return;
+        }
         initUnitTests();
         introduceUnitTests();
         if (this.unitTests.size() <= 0) {
@@ -50,7 +58,7 @@ public abstract class Test {
         System.out.println(ANSI.RESET);
     }
 
-    private void executeUnitTests() throws IOException {
+    private void executeUnitTests() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> chosenUnitTestList = new ArrayList<>();
         System.out.println("Input unit tests to start testing (end with -1) or 0 to test all:");
@@ -76,7 +84,9 @@ public abstract class Test {
             UnitTest unitTest = this.unitTests.get(testId - 1);
             try {
                 unitTest.test();
-            } catch (NullPointerException e) {
+            } catch (NullPointerException | IOException e) {
+//                TODO: sau cần phải comment out cái này
+                System.out.println(e.getMessage());
                 unitTest.forceFail();
             }
             if (unitTest.judge(testId)) {
