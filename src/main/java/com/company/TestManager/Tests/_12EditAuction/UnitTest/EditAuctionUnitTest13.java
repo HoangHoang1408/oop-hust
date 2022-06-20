@@ -3,7 +3,9 @@ package com.company.TestManager.Tests._12EditAuction.UnitTest;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._11CreateAuction.CreateAuctionResponse;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
+import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
+import com.company.constants.Constant;
 import com.company.utils.ConnectionUtil;
 import com.company.utils.Util;
 
@@ -14,8 +16,8 @@ public class EditAuctionUnitTest13 extends UnitTest  {
             "if Title is already used, response code will be 1001 and data should be null ");}
     @Override
     public void test() throws IOException{
-        this.params = this.generateDefaultParams();
-        CreateAuctionResponse res = ConnectionUtil.sendPostRequest("https://auctions-app-2.herokuapp.com/api/auctions/create" ,this.params,CreateAuctionResponse.class, this.getAccessToken());
+        this.params = EditAuctionTest.generateDefaultParams();
+        CreateAuctionResponse res = ConnectionUtil.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION,this.params,CreateAuctionResponse.class, this.getAccessToken());
 
 
         EditAuctionResponse resEdit = ConnectionUtil.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(1, 60, 75), this.params, EditAuctionResponse.class, this.getAccessToken());

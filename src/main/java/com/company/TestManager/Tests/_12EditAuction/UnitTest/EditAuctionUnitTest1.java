@@ -5,6 +5,7 @@ import com.company.TestManager.Tests._11CreateAuction.CreateAuctionResponse;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
+import com.company.constants.Constant;
 import com.company.utils.ConnectionUtil;
 import com.company.utils.Util;
 
@@ -19,7 +20,7 @@ public class EditAuctionUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         this.params = EditAuctionTest.generateDefaultParams();
-        CreateAuctionResponse res = ConnectionUtil.sendPostRequest("https://auctions-app-2.herokuapp.com/api/auctions/create", this.params, CreateAuctionResponse.class, this.getAccessToken());
+        CreateAuctionResponse res = ConnectionUtil.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, this.getAccessToken());
         this.params.put("title_ni", "Túi sách đã được chỉnh sửa của" + Util.randomAlphabetString(5));
 
 

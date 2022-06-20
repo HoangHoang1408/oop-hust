@@ -19,6 +19,11 @@ public class GetDetailsAuctionsUnitTest1 extends UnitTest {
         this.assertionManager.assertEquals(res.code, 1000);
         this.assertionManager.assertBoolean(res.message.length() > 0);
         this.assertionManager.assertNotEquals(res.data, null);
+        this.assertionManager.assertNotEquals(res.data.auctions, null);
+        this.assertionManager.assertNotEquals(res.data.category, null);
+        this.assertionManager.assertNotEquals(res.data.items, null);
+        this.assertionManager.assertNotEquals(res.data.selling_user, null);
+
 
     }
 }
