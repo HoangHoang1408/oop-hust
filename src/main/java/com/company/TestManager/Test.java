@@ -23,20 +23,20 @@ public abstract class Test {
     }
 
     protected void startTest() {
-        System.out.println(ANSI.YELLOW + "Initializing unit tests..." + ANSI.RESET);
+        System.out.println(ANSI.YELLOW + "Preparing data for unit tests..." + ANSI.RESET);
         try {
             beforeAll();
         } catch (IOException e) {
-//                TODO: sau cần phải comment out cái này
+//          TODO: need to comment out next line when finish
             System.out.println(e.getMessage());
-            System.out.println(ANSI.RED + "Can not initialize test!");
+            System.out.println(ANSI.RED + "Failed to prepare data for unit tests!");
             System.out.println("Try again later" + ANSI.RESET);
             return;
         }
         initUnitTests();
         introduceUnitTests();
         if (this.unitTests.size() <= 0) {
-            System.out.println(ANSI.YELLOW + "This api has no test" + ANSI.RESET);
+            System.out.println(ANSI.YELLOW + "This api has no test!" + ANSI.RESET);
             return;
         }
         executeUnitTests();
@@ -46,6 +46,9 @@ public abstract class Test {
     protected abstract void initUnitTests();
 
     protected void beforeAll() throws IOException {
+    }
+
+    protected void beforeEach() throws IOException {
     }
 
     private void introduceUnitTests() {
@@ -58,10 +61,10 @@ public abstract class Test {
         System.out.println(ANSI.RESET);
     }
 
-    private void executeUnitTests() {
+    private ArrayList<Integer> takeChosenUnitTestIds() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> chosenUnitTestList = new ArrayList<>();
-        System.out.println("Input unit tests to start testing (end with -1) or 0 to test all:");
+        System.out.println("Input unit test ids to start testing (end with -1) or input 0 to test all:");
         while (scanner.hasNextInt()) {
             String input = scanner.next();
             if (input.equals("-1")) break;
@@ -77,28 +80,39 @@ public abstract class Test {
             }
             chosenUnitTestList.add(temp);
         }
+        return chosenUnitTestList;
+    }
+
+    private void notifyUnitTestsPassedOrFail(int totalUnitTests, ArrayList<String> failedTestList) {
+        int totalTestsPassed = totalUnitTests - failedTestList.size();
+        String color = totalTestsPassed == totalUnitTests ? ANSI.GREEN : ANSI.RED;
+        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + totalUnitTests + " tests passed!" + ANSI.RESET);
+        if (failedTestList.size() <= 0) return;
+        System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
+    }
+
+    private void executeUnitTests() {
+        ArrayList<Integer> chosenUnitTestList = takeChosenUnitTestIds();
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
-        int totalTestsPassed = 0;
         ArrayList<String> failedTestList = new ArrayList<>();
         for (Integer testId : chosenUnitTestList) {
             UnitTest unitTest = this.unitTests.get(testId - 1);
             try {
+                try {
+                    beforeEach();
+                } catch (IOException e) {
+                    System.out.println(ANSI.RED + "Failed to initialize unit test " + testId + ANSI.RESET);
+                    throw e;
+                }
                 unitTest.test();
             } catch (NullPointerException | IOException e) {
-//                TODO: sau cần phải comment out cái này
-                System.out.println(e.getMessage());
+//              TODO: need to comment out next line when finish
+                if (e.getClass().equals(IOException.class)) System.out.println(e.getMessage());
                 unitTest.forceFail();
             }
-            if (unitTest.judge(testId)) {
-                totalTestsPassed += 1;
-            } else {
-                failedTestList.add(testId.toString());
-            }
+            if (!unitTest.judge(testId)) failedTestList.add(testId.toString());
         }
-        String color = totalTestsPassed == chosenUnitTestList.size() ? ANSI.GREEN : ANSI.RED;
-        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + chosenUnitTestList.size() + " tests passed!" + ANSI.RESET);
-        if (failedTestList.size() <= 0) return;
-        System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
+        notifyUnitTestsPassedOrFail(chosenUnitTestList.size(), failedTestList);
     }
 
     public String getFullURLString() {

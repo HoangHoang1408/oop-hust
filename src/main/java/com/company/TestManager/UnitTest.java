@@ -8,7 +8,6 @@ import java.util.HashMap;
 
 // abstract class của các test (các class unit test khác phải kế thừa class này)
 public abstract class UnitTest {
-    private final Test test;
     protected String expectation;
     protected HashMap<String, String> params;
     protected String fullURLString;
@@ -17,9 +16,8 @@ public abstract class UnitTest {
 
     public UnitTest(Test test, String expectation) {
         this.params = new HashMap<>();
-        this.test = test;
-        this.fullURLString = this.test.getFullURLString();
-        this.baseURLString = this.test.getBaseUrlString();
+        this.fullURLString = test.getFullURLString();
+        this.baseURLString = test.getBaseUrlString();
         this.expectation = expectation;
         this.assertionManager = new AssertionManager(expectation);
     }
@@ -27,7 +25,7 @@ public abstract class UnitTest {
 
     //    có thể được gọi ở class con để lấy đc accesstoken
     protected String getAccessToken() {
-        return ConnectionUtil.getAccessToken();
+        return ConnectionUtil.getAccessToken(this.baseURLString);
     }
 
     //    thường đc gọi ở class con để gửi post request (ko kèm access token)

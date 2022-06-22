@@ -2,9 +2,9 @@ package com.company.constants;
 
 import java.util.HashMap;
 
-// chứa base url và các api cần test
 public class Constant {
     public static final String DEFAULT_BASE_URL = "https://auctions-app-2.herokuapp.com/api";
+    public static final String BASE_URL_2 = "https://auctions-app3.herokuapp.com/api";
     public static final String SIGN_UP = "signup";
     public static final String LOG_IN = "login";
     public static final String LOG_OUT = "logout";
@@ -35,9 +35,14 @@ public class Constant {
     public static final String GET_NOTIFICATIONS = "notifications";
     public static final String READ_NOTIFICATIONS = "notifications/read";
     public static final String GET_SLIDER = "slider";
+    public static final HashMap<Integer, String> baseUrls = new HashMap<>();
+    public static final HashMap<Integer, String> paths = new HashMap<>();
+    public static final HashMap<Integer, String> testNames = new HashMap<>();
 
-    public static HashMap<Integer, String> paths = new HashMap<>();
-    public static HashMap<Integer, String> testNames = new HashMap<>();
+    static {
+        baseUrls.put(1, DEFAULT_BASE_URL);
+        baseUrls.put(2, BASE_URL_2);
+    }
 
     static {
         paths.put(1, Constant.SIGN_UP);

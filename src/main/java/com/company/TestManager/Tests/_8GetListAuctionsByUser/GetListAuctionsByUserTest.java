@@ -39,7 +39,6 @@ public class GetListAuctionsByUserTest extends Test {
 
         // create auctions to test
         HashMap<String, String> tempParams2 = CreateAuctionTest.generateDefaultParams();
-
     }
 
     @Override

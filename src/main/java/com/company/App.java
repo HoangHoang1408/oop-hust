@@ -25,25 +25,26 @@ public class App {
         while (this.running) {
             printOption();
             switch (this.getOption("Select option (integer):")) {
-                case 1 -> this.setBaseUrl();
-                case 2 -> this.testAPI();
-                case 3 -> {
+                case 0 -> {
                     this.quitApp();
                     break tag;
                 }
+                case 1 -> this.checkBaseUrl();
+                case 2 -> this.changeBaseUrl();
+                case 3 -> this.testAPI();
             }
-            int temp = this.getOption("Continue? (1|0)");
+            int temp = this.getOption(ANSI.YELLOW + "Continue? (1|0)" + ANSI.RESET);
             if (temp == 0) this.quitApp();
         }
     }
 
     private void printOption() {
-        System.out.println("\n////////////////////////////////////");
         System.out.print(ANSI.YELLOW);
         System.out.println("Options: ");
-        System.out.println("1) Input Base URL");
-        System.out.println("2) Test API");
-        System.out.println("3) Quit");
+        System.out.println("0) Quit");
+        System.out.println("1) Check Base URL");
+        System.out.println("2) Change Base URL");
+        System.out.println("3) Test API");
         System.out.print(ANSI.RESET);
     }
 
@@ -54,15 +55,26 @@ public class App {
         return option;
     }
 
-    private void setBaseUrl() {
-        System.out.println("Input base URL (string):");
-        String baseURL = scanner.nextLine();
-        if (baseURL != null && !baseURL.equals("")) {
-            this.baseUrl.setBaseURL(baseURL);
-            System.out.println("Base ULR set!");
-        } else {
-            System.out.println("Will use default Base URL!");
+    private void checkBaseUrl() {
+        System.out.println(this.baseUrl.getBaseURL());
+    }
+
+    private void changeBaseUrl() {
+        System.out.println("Input Base URL ID to set or input 0 to enter new Base URL string:");
+        Constant.baseUrls.forEach((i, s) -> System.out.println(i + ") " + s + (i == 1 ? " (Default)" : "")));
+        int option = getOption("Your choice: ");
+        if (option != 0) this.baseUrl.setBaseURL(Constant.baseUrls.get(option));
+        else {
+            System.out.println("New Base URL string:");
+            String baseURL = scanner.nextLine();
+            if (baseURL != null && !baseURL.equals("")) {
+                this.baseUrl.setBaseURL(baseURL);
+                Constant.baseUrls.put(Constant.baseUrls.size() + 1, baseURL);
+            } else {
+                System.out.println("Will use default Base URL!");
+            }
         }
+        System.out.println("Base ULR set!");
     }
 
     private void testAPI() {

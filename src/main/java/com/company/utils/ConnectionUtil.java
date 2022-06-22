@@ -103,12 +103,12 @@ public class ConnectionUtil {
         return res;
     }
 
-    public static String getAccessToken() {
+    public static String getAccessToken(String baseUrl) {
         try {
             HashMap<String, String> tempParams = new HashMap<>();
             tempParams.put("email", "Cube@gmail.com");
             tempParams.put("password", "12345678");
-            LoginResponse res = ConnectionUtil.sendPostRequest(Constant.DEFAULT_BASE_URL + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
+            LoginResponse res = ConnectionUtil.sendPostRequest(baseUrl + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
             return res.data.access_token;
         } catch (IOException e) {
             System.out.println("Can not get access token!");
