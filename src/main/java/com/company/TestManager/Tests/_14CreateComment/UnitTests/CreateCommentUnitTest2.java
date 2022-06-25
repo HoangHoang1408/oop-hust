@@ -13,7 +13,7 @@ public class CreateCommentUnitTest2 extends UnitTest {
     }
     @Override
     public void test() throws IOException {
-        String comment = "Hello";
+        String comment = "Hello Tung";
         this.params.put("content", comment);
         this.params.put("comment_last_id", "10");
 
@@ -25,12 +25,7 @@ public class CreateCommentUnitTest2 extends UnitTest {
         this.assertionManager.assertInstanceOf(res.message, String.class);
         this.assertionManager.assertNotEquals(res.data, null);
         this.assertionManager.assertBoolean(Integer.parseInt(res.data.total) >= 1);
-        this.assertionManager.assertBoolean(res.data.content.length() >= 1);
-        this.assertionManager.assertInstanceOf(res.data.auction_id, String.class);
-        this.assertionManager.assertInstanceOf(res.data.user_id, String.class);
-        this.assertionManager.assertInstanceOf(res.data.content, String.class);
-        this.assertionManager.assertInstanceOf(res.data.update_at, String.class);
-        this.assertionManager.assertInstanceOf(res.data.total, String.class);
+
 
     }
 }
