@@ -18,9 +18,9 @@ public class SignUpUnitTest4 extends UnitTest {
         this.params = SignUpTest.generateDefaultParams();
         this.params.put("name", "");
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
+        this.assertion.assertTrue(res.message.length() > 0);
     }
 }

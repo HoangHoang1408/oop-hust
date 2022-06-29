@@ -1,9 +1,9 @@
 package com.company.TestManager.Tests._3Logout.UnitTests;
 
+import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._3Logout.LogoutResponse;
 import com.company.TestManager.UnitTest;
-import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ public class LogoutUnitTest2 extends UnitTest {
     @Override
     public void test() throws IOException {
         String accessToken = "djsldfgdfdsfsdgdfwrong214fgjksldfgjsdaNiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5cdgjdfgdklzfg"; //wrong access token
-        LogoutResponse res = ConnectionUtil.sendPostRequest(this.fullURLString, this.params, LogoutResponse.class, accessToken);
-        this.assertionManager.assertEquals(res.code, 1004);
-        this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
+        LogoutResponse res = Connection.sendPostRequest(this.fullURLString, this.params, LogoutResponse.class, accessToken);
+        this.assertion.assertEquals(res.code, 1004);
+        this.assertion.assertEquals(res.data, null);
+        this.assertion.assertTrue(res.message.length() > 0);
     }
 }

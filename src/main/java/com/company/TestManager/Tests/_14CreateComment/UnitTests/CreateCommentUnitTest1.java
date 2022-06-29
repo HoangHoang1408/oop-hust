@@ -1,9 +1,9 @@
 package com.company.TestManager.Tests._14CreateComment.UnitTests;
 
+import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._14CreateComment.CreateCommentResponse;
-import com.company.utils.ConnectionUtil;
+import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
@@ -20,14 +20,14 @@ public class CreateCommentUnitTest1 extends UnitTest {
         this.params.put("content", comment);
         this.params.put("comment_last_id", "10");
 
-        CreateCommentResponse res = ConnectionUtil.sendPostRequest(this.fullURLString + "/1", this.params, CreateCommentResponse.class, this.getAccessToken());
+        CreateCommentResponse res = Connection.sendPostRequest(this.fullURLString + "/1", this.params, CreateCommentResponse.class, this.getAccessToken());
 
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
-        this.assertionManager.assertNotEquals(res.data, null);
-        this.assertionManager.assertBoolean(Integer.parseInt(res.data.total) >= 1);
-        this.assertionManager.assertBoolean(res.data.comments.size() >= 1);
-        this.assertionManager.assertBoolean(res.data.comments.stream().map(cm -> cm.content).toList().contains(comment));
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertNotEquals(res.data, null);
+        this.assertion.assertTrue(Integer.parseInt(res.data.total) >= 1);
+        this.assertion.assertTrue(res.data.comments.size() >= 1);
+        this.assertion.assertTrue(res.data.comments.stream().map(cm -> cm.content).toList().contains(comment));
     }
 }

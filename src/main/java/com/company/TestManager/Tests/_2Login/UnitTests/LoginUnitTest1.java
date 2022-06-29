@@ -24,24 +24,24 @@ public class LoginUnitTest1 extends UnitTest {
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
 
 //        đưa ra các giả định
-        this.assertionManager.assertNotEquals(res, null);
+        this.assertion.assertNotEquals(res, null);
 
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertInstanceOf(res.message, String.class);
 
         LoginResponse.Data data = res.data;
-        this.assertionManager.assertNotEquals(data, null);
-        this.assertionManager.assertBoolean(data.access_token.length() > 0);
-        this.assertionManager.assertBoolean(data.token_type.length() > 0);
-        this.assertionManager.assertBoolean(data.expires_in.length() > 0);
+        this.assertion.assertNotEquals(data, null);
+        this.assertion.assertTrue(data.access_token.length() > 0);
+        this.assertion.assertTrue(data.token_type.length() > 0);
+        this.assertion.assertTrue(data.expires_in.length() > 0);
 
         User user = res.data.user;
-        this.assertionManager.assertNotEquals(user, null);
-        this.assertionManager.assertBoolean(user.name.length() > 0);
-        this.assertionManager.assertEquals(user.role, "2");
-        this.assertionManager.assertBoolean(user.avatar.length() > 0);
-        this.assertionManager.assertEquals(user.email, tempEmail);
-        this.assertionManager.assertBoolean(user.phone.length() > 0);
+        this.assertion.assertNotEquals(user, null);
+        this.assertion.assertTrue(user.name.length() > 0);
+        this.assertion.assertEquals(user.role, "2");
+        this.assertion.assertTrue(user.avatar.length() > 0);
+        this.assertion.assertEquals(user.email, tempEmail);
+        this.assertion.assertTrue(user.phone.length() > 0);
 
     }
 }

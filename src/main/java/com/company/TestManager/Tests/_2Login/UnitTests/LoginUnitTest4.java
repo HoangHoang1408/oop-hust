@@ -17,15 +17,15 @@ public class LoginUnitTest4 extends UnitTest {
         this.params.put("email", Util.randomAlphabetOrNumberString(200, 60) + "@gmail.com");
         this.params.put("password", "123456546");
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
 
         this.params.put("email", "");
         this.params.put("password", Util.randomAlphabetOrNumberString(10, 10));
         res = this.sendPostRequest(LoginResponse.class);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
     }
 }

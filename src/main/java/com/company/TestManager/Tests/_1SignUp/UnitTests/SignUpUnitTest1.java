@@ -19,18 +19,18 @@ public class SignUpUnitTest1 extends UnitTest {
         this.params = SignUpTest.generateDefaultParams();
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.message.length() > 0);
 
 
         User user = res.data;
-        this.assertionManager.assertNotEquals(user, null);
-        this.assertionManager.assertEquals(user.name, this.params.get("name"));
-        this.assertionManager.assertEquals(user.role, "2");
-        this.assertionManager.assertBoolean(user.avatar.length() > 0);
-        this.assertionManager.assertEquals(user.address, this.params.get("address"));
-        this.assertionManager.assertEquals(user.email, this.params.get("email"));
-        this.assertionManager.assertEquals(user.phone, this.params.get("phone"));
+        this.assertion.assertNotEquals(user, null);
+        this.assertion.assertEquals(user.name, this.params.get("name"));
+        this.assertion.assertEquals(user.role, "2");
+        this.assertion.assertTrue(user.avatar.length() > 0);
+        this.assertion.assertEquals(user.address, this.params.get("address"));
+        this.assertion.assertEquals(user.email, this.params.get("email"));
+        this.assertion.assertEquals(user.phone, this.params.get("phone"));
     }
 }

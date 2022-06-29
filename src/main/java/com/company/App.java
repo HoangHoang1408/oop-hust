@@ -33,7 +33,7 @@ public class App {
                 case 2 -> this.changeBaseUrl();
                 case 3 -> this.testAPI();
             }
-            int temp = this.getOption(ANSI.YELLOW + "Continue? (1|0)" + ANSI.RESET);
+            int temp = this.getOption("Continue? (1|0)");
             if (temp == 0) this.quitApp();
         }
     }

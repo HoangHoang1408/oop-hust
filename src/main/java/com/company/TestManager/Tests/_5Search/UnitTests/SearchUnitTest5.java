@@ -17,9 +17,9 @@ public class SearchUnitTest5 extends UnitTest {
         this.params.put("type", "1");
         this.params.put("key", SearchTest.testItemData.starting_price);
         SearchResponse res = this.sendGetRequest(SearchResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
-        this.assertionManager.assertBoolean(res.data.size() > 0);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertTrue(res.data.size() > 0);
     }
 }

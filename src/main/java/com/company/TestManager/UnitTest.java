@@ -1,7 +1,5 @@
 package com.company.TestManager;
 
-import com.company.utils.ConnectionUtil;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -12,54 +10,54 @@ public abstract class UnitTest {
     protected HashMap<String, String> params;
     protected String fullURLString;
     protected String baseURLString;
-    protected AssertionManager assertionManager;
+    protected Assertion assertion;
 
     public UnitTest(Test test, String expectation) {
         this.params = new HashMap<>();
         this.fullURLString = test.getFullURLString();
         this.baseURLString = test.getBaseUrlString();
         this.expectation = expectation;
-        this.assertionManager = new AssertionManager(expectation);
+        this.assertion = new Assertion(expectation);
     }
 
 
     //    có thể được gọi ở class con để lấy đc accesstoken
     protected String getAccessToken() {
-        return ConnectionUtil.getAccessToken(this.baseURLString);
+        return Connection.getAccessToken(this.baseURLString);
     }
 
     //    thường đc gọi ở class con để gửi post request (ko kèm access token)
     protected <T> T sendPostRequest(Class<T> cl) throws IOException {
-        return ConnectionUtil.sendPostRequest(this.fullURLString, this.params, cl, null);
+        return Connection.sendPostRequest(this.fullURLString, this.params, cl, null);
     }
 
 
     //    thường đc gọi ở class con để gửi post request (có kèm access token)
     public <T> T sendPostRequestWithAccessToken(Class<T> cl) throws IOException {
         String accessToken = this.getAccessToken();
-        return ConnectionUtil.sendPostRequest(this.fullURLString, this.params, cl, accessToken);
+        return Connection.sendPostRequest(this.fullURLString, this.params, cl, accessToken);
     }
 
     //    thường đc gọi ở class con để gửi get request (ko kèm access token)
     protected <T> T sendGetRequest(Class<T> cl) throws IOException {
-        return ConnectionUtil.sendGetRequest(this.fullURLString, this.params, cl, null);
+        return Connection.sendGetRequest(this.fullURLString, this.params, cl, null);
     }
 
     //    thường đc gọi ở class con để gửi get request (có kèm access token)
     protected <T> T sendGetRequestWithAccessToken(Class<T> cl) throws IOException {
         String accessToken = this.getAccessToken();
-        return ConnectionUtil.sendGetRequest(this.fullURLString, this.params, cl, accessToken);
+        return Connection.sendGetRequest(this.fullURLString, this.params, cl, accessToken);
     }
 
     //    hàm bắt buộc phải ghi đè ở lớp con
     protected abstract void test() throws IOException;
 
     public boolean judge(int i) {
-        return this.assertionManager.judge(i);
+        return this.assertion.judge(i);
     }
 
     public void forceFail() {
-        this.assertionManager.forceFail();
+        this.assertion.forceFail();
     }
 
     public String getExpectation() {

@@ -20,8 +20,8 @@ public class SignUpUnitTest2 extends UnitTest {
         this.sendPostRequest(SignUpResponse.class);
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
 
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.data, null);
     }
 }

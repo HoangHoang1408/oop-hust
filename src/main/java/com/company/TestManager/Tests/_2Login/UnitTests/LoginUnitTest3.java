@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._2Login.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._2Login.LoginResponse;
+import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
@@ -18,8 +18,8 @@ public class LoginUnitTest3 extends UnitTest {
 
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
 
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
     }
 }

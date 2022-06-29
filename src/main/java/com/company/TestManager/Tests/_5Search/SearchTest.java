@@ -1,6 +1,7 @@
 package com.company.TestManager.Tests._5Search;
 
 import com.company.BaseURL;
+import com.company.TestManager.Connection;
 import com.company.TestManager.Objects.Auction;
 import com.company.TestManager.Objects.Item;
 import com.company.TestManager.Test;
@@ -8,7 +9,6 @@ import com.company.TestManager.Tests._10GetDetailsAuctions.GetDetailsAuctionsRes
 import com.company.TestManager.Tests._5Search.UnitTests.*;
 import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
 import com.company.constants.Constant;
-import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,8 +41,8 @@ public class SearchTest extends Test {
         HashMap<String, String> tempParams = new HashMap<>();
         tempParams.put("index", "2");
         tempParams.put("count", "1");
-        GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.baseURLString + "/" + Constant.GET_LIST_AUCTIONS, tempParams, GetListAuctionsResponse.class, null);
-        GetDetailsAuctionsResponse res2 = ConnectionUtil.sendGetRequest(this.baseURLString + "/" + Constant.GET_DETAILS_AUCTIONS + "/" + res.data.auctions.get(0).auction_id, null, GetDetailsAuctionsResponse.class, null);
+        GetListAuctionsResponse res = Connection.sendGetRequest(this.baseURLString + "/" + Constant.GET_LIST_AUCTIONS, tempParams, GetListAuctionsResponse.class, null);
+        GetDetailsAuctionsResponse res2 = Connection.sendGetRequest(this.baseURLString + "/" + Constant.GET_DETAILS_AUCTIONS + "/" + res.data.auctions.get(0).auction_id, null, GetDetailsAuctionsResponse.class, null);
         SearchTest.testAuctionData = res2.data.auctions;
         SearchTest.testItemData = res2.data.items;
     }

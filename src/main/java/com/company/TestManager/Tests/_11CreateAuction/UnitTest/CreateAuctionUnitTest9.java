@@ -18,9 +18,9 @@ public class CreateAuctionUnitTest9 extends UnitTest {
         this.params.put("end_date", "2023-06-19 11:03:38 ");
 
         CreateAuctionResponse res = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.data, null);
 
     }
 }

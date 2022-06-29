@@ -17,10 +17,10 @@ public class CreateAuctionUnitTest1 extends UnitTest {
         this.params = CreateAuctionTest.generateDefaultParams();
 
         CreateAuctionResponse res = sendPostRequestWithAccessToken(CreateAuctionResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
-        this.assertionManager.assertNotEquals(res.data, null);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertNotEquals(res.data, null);
 
 
     }

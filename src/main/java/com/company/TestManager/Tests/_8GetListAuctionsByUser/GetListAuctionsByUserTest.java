@@ -1,6 +1,7 @@
 package com.company.TestManager.Tests._8GetListAuctionsByUser;
 
 import com.company.BaseURL;
+import com.company.TestManager.Connection;
 import com.company.TestManager.Objects.User;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._11CreateAuction.CreateAuctionTest;
@@ -8,7 +9,6 @@ import com.company.TestManager.Tests._2Login.LoginResponse;
 import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
 import com.company.TestManager.UnitTest;
 import com.company.constants.Constant;
-import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class GetListAuctionsByUserTest extends Test {
         HashMap<String, String> tempParams = new HashMap<>();
         tempParams.put("email", "Cube@gmail.com");
         tempParams.put("password", "12345678");
-        LoginResponse res = ConnectionUtil.sendPostRequest(this.baseURLString + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
+        LoginResponse res = Connection.sendPostRequest(this.baseURLString + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
         GetListAuctionsByUserTest.userTestData = res.data.user;
         GetListAuctionsByUserTest.accessTokenTestData = res.data.access_token;
 
@@ -62,13 +62,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/1", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("1") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("1") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 
@@ -79,13 +79,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/2", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/2", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("2") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("2") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 
@@ -96,13 +96,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/3", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/3", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("3") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("3") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 
@@ -113,13 +113,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/4", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/4", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("4") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("4") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 
@@ -130,13 +130,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/5", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/5", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("5") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("5") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 
@@ -147,13 +147,13 @@ public class GetListAuctionsByUserTest extends Test {
 
         @Override
         protected void test() throws IOException {
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/6", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
-            this.assertionManager.assertNotEquals(res, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertBoolean(res.message.length() > 0);
-            this.assertionManager.assertBoolean(res.data.total >= 0);
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/6", GetListAuctionsByUserTest.defaultParams, GetListAuctionsResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+            this.assertion.assertNotEquals(res, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertTrue(res.message.length() > 0);
+            this.assertion.assertTrue(res.data.total >= 0);
             if (res.data.auctions.size() == 0) return;
-            this.assertionManager.assertBoolean(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("6") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
+            this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.statusId.equals("6") && auction.selling_user_id.equals(GetListAuctionsByUserTest.userTestData.user_id)));
         }
     }
 }

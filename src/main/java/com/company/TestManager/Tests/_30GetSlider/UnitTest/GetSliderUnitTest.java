@@ -7,16 +7,17 @@ import com.company.TestManager.UnitTest;
 import java.io.IOException;
 
 public class GetSliderUnitTest extends UnitTest {
-    public GetSliderUnitTest(Test test){super(test, "the response code and message strings shall be not null as well as non-empty");
+    public GetSliderUnitTest(Test test) {
+        super(test, "the response code and message strings shall be not null as well as non-empty");
 
     }
 
-    public void test() throws IOException{
+    public void test() throws IOException {
         GetSliderResponse res = sendGetRequest(GetSliderResponse.class);
 
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertNotEquals(res.data, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertNotEquals(res.data, null);
 
     }
 }

@@ -26,10 +26,10 @@ public abstract class Test {
         System.out.println(ANSI.YELLOW + "Preparing data for unit tests..." + ANSI.RESET);
         try {
             beforeAll();
-        } catch (IOException e) {
+        } catch (Exception e) {
 //          TODO: need to comment out next line when finish
             System.out.println(e.getMessage());
-            System.out.println(ANSI.RED + "Failed to prepare data for unit tests!");
+            System.out.println(ANSI.RED + "Failed to prepare for unit tests!");
             System.out.println("Try again later" + ANSI.RESET);
             return;
         }
@@ -40,6 +40,14 @@ public abstract class Test {
             return;
         }
         executeUnitTests();
+        try {
+            afterAll();
+        } catch (Exception e) {
+//          TODO: need to comment out next line when finish
+            System.out.println(e.getMessage());
+            System.out.println(ANSI.RED + "Failed to finish after unit tests!");
+            System.out.println("Try again later" + ANSI.RESET);
+        }
     }
 
     //  phương thức này phải đc ghi đề ở class con
@@ -49,6 +57,12 @@ public abstract class Test {
     }
 
     protected void beforeEach() throws IOException {
+    }
+
+    protected void afterAll() throws IOException {
+    }
+
+    protected void afterEach() throws IOException {
     }
 
     private void introduceUnitTests() {
@@ -86,7 +100,7 @@ public abstract class Test {
     private void notifyUnitTestsPassedOrFail(int totalUnitTests, ArrayList<String> failedTestList) {
         int totalTestsPassed = totalUnitTests - failedTestList.size();
         String color = totalTestsPassed == totalUnitTests ? ANSI.GREEN : ANSI.RED;
-        System.out.println("\n" + color + "Finished: " + totalTestsPassed + "/" + totalUnitTests + " tests passed!" + ANSI.RESET);
+        System.out.println("\n" + color + "Total: " + totalTestsPassed + " of " + totalUnitTests + " tests passed!" + ANSI.RESET);
         if (failedTestList.size() <= 0) return;
         System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
     }
@@ -101,10 +115,16 @@ public abstract class Test {
                 try {
                     beforeEach();
                 } catch (IOException e) {
-                    System.out.println(ANSI.RED + "Failed to initialize unit test " + testId + ANSI.RESET);
+                    System.out.println(ANSI.RED + "Failed to prepare unit test " + testId + ANSI.RESET);
                     throw e;
                 }
                 unitTest.test();
+                try {
+                    afterEach();
+                } catch (IOException e) {
+                    System.out.println(ANSI.RED + "Failed to finish unit test " + testId + ANSI.RESET);
+                    throw e;
+                }
             } catch (NullPointerException | IOException e) {
 //              TODO: need to comment out next line when finish
                 if (e.getClass().equals(IOException.class)) System.out.println(e.getMessage());

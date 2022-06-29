@@ -1,10 +1,10 @@
 package com.company.TestManager.Tests._12EditAuction.UnitTest;
 
+import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
-import com.company.utils.ConnectionUtil;
 
 import java.io.IOException;
 
@@ -18,11 +18,11 @@ public class EditAuctionUnitTest3 extends UnitTest {
     public void test() throws IOException {
         this.params = EditAuctionTest.generateDefaultParams();
 
-        EditAuctionResponse res = ConnectionUtil.sendPostRequest(this.fullURLString + "/1", this.params, EditAuctionResponse.class, this.getAccessToken());
+        EditAuctionResponse res = Connection.sendPostRequest(this.fullURLString + "/1", this.params, EditAuctionResponse.class, this.getAccessToken());
 
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1005);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1005);
+        this.assertion.assertEquals(res.data, null);
 
 
     }

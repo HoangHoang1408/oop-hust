@@ -21,17 +21,17 @@ public class SignUpUnitTest10 extends UnitTest {
         this.params.put("re_pass", temp);
 
         SignUpResponse res = this.sendPostRequest(SignUpResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
+        this.assertion.assertTrue(res.message.length() > 0);
 
         this.params.put("password", "");
         this.params.put("re_pass", "");
         res = this.sendPostRequest(SignUpResponse.class);
-        this.assertionManager.assertNotEquals(res, null);
-        this.assertionManager.assertEquals(res.code, 1001);
-        this.assertionManager.assertEquals(res.data, null);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
+        this.assertion.assertTrue(res.message.length() > 0);
     }
 }

@@ -1,4 +1,4 @@
-package com.company.utils;
+package com.company.TestManager;
 
 import com.company.TestManager.Tests._2Login.LoginResponse;
 import com.company.constants.Constant;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 
 // class chứa các phương thức cần thiết để gửi request đến server
-public class ConnectionUtil {
+public class Connection {
     private static StringBuilder createQueryString(HashMap<String, String> params) {
         if (params == null) return new StringBuilder();
         StringBuilder query = new StringBuilder();
@@ -61,7 +61,7 @@ public class ConnectionUtil {
             content.append(line);
             content.append(System.lineSeparator());
         }
-        System.out.println(content);
+//        System.out.println(content);
         in.close();
         try {
             return new Gson().fromJson(content.toString(), cl);
@@ -87,7 +87,7 @@ public class ConnectionUtil {
 
     //    phương thức gửi post request cần dùng ở các class khác
     public static <T> T sendPostRequest(String fullURLString, HashMap<String, String> params, Class<T> cl, String accessToken) throws IOException {
-        HttpURLConnection connection = ConnectionUtil.createHttpConnection(fullURLString, HttpMethod.POST, accessToken);
+        HttpURLConnection connection = Connection.createHttpConnection(fullURLString, HttpMethod.POST, accessToken);
         byte[] requestBytes = createQueryString(params).toString().getBytes(StandardCharsets.UTF_8);
         T res = getResponseData(connection, requestBytes, cl, accessToken);
         connection.disconnect();
@@ -97,7 +97,7 @@ public class ConnectionUtil {
 
     //    phương thức gửi get request cần dùng ở các class khác
     public static <T> T sendGetRequest(String fullURLString, HashMap<String, String> params, Class<T> cl, String accessToken) throws IOException {
-        HttpURLConnection connection = ConnectionUtil.createHttpConnection(fullURLString + "?" + createQueryString(params), HttpMethod.GET, accessToken);
+        HttpURLConnection connection = Connection.createHttpConnection(fullURLString + "?" + createQueryString(params), HttpMethod.GET, accessToken);
         T res = getResponseData(connection, null, cl, accessToken);
         connection.disconnect();
         return res;
@@ -108,7 +108,7 @@ public class ConnectionUtil {
             HashMap<String, String> tempParams = new HashMap<>();
             tempParams.put("email", "Cube@gmail.com");
             tempParams.put("password", "12345678");
-            LoginResponse res = ConnectionUtil.sendPostRequest(baseUrl + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
+            LoginResponse res = Connection.sendPostRequest(baseUrl + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
             return res.data.access_token;
         } catch (IOException e) {
             System.out.println("Can not get access token!");

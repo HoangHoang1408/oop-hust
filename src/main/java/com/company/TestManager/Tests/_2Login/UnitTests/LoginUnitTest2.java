@@ -1,8 +1,8 @@
 package com.company.TestManager.Tests._2Login.UnitTests;
 
 import com.company.TestManager.Test;
-import com.company.TestManager.UnitTest;
 import com.company.TestManager.Tests._2Login.LoginResponse;
+import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
@@ -18,9 +18,9 @@ public class LoginUnitTest2 extends UnitTest {
         this.params.put("email", "thanh12345@gmail.com");
         this.params.put("password", "123456546");
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.code, 1002);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1002);
+        this.assertion.assertEquals(res.data, null);
 
         this.params.clear();
 
@@ -28,9 +28,9 @@ public class LoginUnitTest2 extends UnitTest {
         this.params.put("password", "123dg456");
         res = this.sendPostRequest(LoginResponse.class);
 
-        this.assertionManager.assertInstanceOf(res.message, String.class);
-        this.assertionManager.assertEquals(res.code, 1002);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1002);
+        this.assertion.assertEquals(res.data, null);
 
     }
 }

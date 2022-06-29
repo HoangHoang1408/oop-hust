@@ -7,8 +7,10 @@ import com.company.TestManager.UnitTest;
 import java.io.IOException;
 
 public class EditAccountUnitTest1 extends UnitTest {
-    public EditAccountUnitTest1(Test test) {super(test, "Can edit account with correct access token");
+    public EditAccountUnitTest1(Test test) {
+        super(test, "Can edit account with correct access token");
     }
+
     @Override
     public void test() throws IOException {
         //        create request object
@@ -19,8 +21,8 @@ public class EditAccountUnitTest1 extends UnitTest {
         this.params.put("phone", "0826518516");
 
         EditAccountResponse res = this.sendPostRequestWithAccessToken(EditAccountResponse.class);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertInstanceOf(res.message, String.class);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertInstanceOf(res.message, String.class);
 
     }
 }

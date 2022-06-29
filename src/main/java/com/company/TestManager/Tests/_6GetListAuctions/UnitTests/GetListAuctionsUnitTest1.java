@@ -18,7 +18,7 @@ public class GetListAuctionsUnitTest1 extends UnitTest {
         this.params.put("index", index);
         this.params.put("count", count);
         GetListAuctionsResponse res = this.sendGetRequest(GetListAuctionsResponse.class);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
     }
 }

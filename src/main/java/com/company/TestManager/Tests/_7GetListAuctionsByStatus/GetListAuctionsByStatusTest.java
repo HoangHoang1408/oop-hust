@@ -1,10 +1,10 @@
 package com.company.TestManager.Tests._7GetListAuctionsByStatus;
 
 import com.company.BaseURL;
+import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
 import com.company.TestManager.UnitTest;
-import com.company.utils.ConnectionUtil;
 import com.company.utils.Util;
 
 import java.io.IOException;
@@ -40,10 +40,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/4", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/4", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -58,10 +58,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/1", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -76,10 +76,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/2", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/2", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -94,10 +94,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/3", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/3", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -112,10 +112,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/5", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/5", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -130,10 +130,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + "/6", this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + "/6", this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 
@@ -148,10 +148,10 @@ public class GetListAuctionsByStatusTest extends Test {
             String count = "5";
             this.params.put("index", index);
             this.params.put("count", count);
-            GetListAuctionsResponse res = ConnectionUtil.sendGetRequest(this.fullURLString + Util.randomAlphabetOrNumberString(3, 3), this.params, GetListAuctionsResponse.class, null);
-            this.assertionManager.assertEquals(res.code, 1000);
-            this.assertionManager.assertNotEquals(res.data.auctions, null);
-            this.assertionManager.assertBoolean(res.data.auctions.size() <= Integer.parseInt(count));
+            GetListAuctionsResponse res = Connection.sendGetRequest(this.fullURLString + Util.randomAlphabetOrNumberString(3, 3), this.params, GetListAuctionsResponse.class, null);
+            this.assertion.assertEquals(res.code, 1000);
+            this.assertion.assertNotEquals(res.data.auctions, null);
+            this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
         }
     }
 }

@@ -14,8 +14,8 @@ public class LogoutUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         LogoutResponse res = this.sendPostRequestWithAccessToken(LogoutResponse.class);
-        this.assertionManager.assertEquals(res.code, 1000);
-        this.assertionManager.assertBoolean(res.message.length() > 0);
-        this.assertionManager.assertEquals(res.data, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertEquals(res.data, null);
     }
 }
