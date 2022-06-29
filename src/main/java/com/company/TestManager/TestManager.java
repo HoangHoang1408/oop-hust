@@ -72,6 +72,5 @@ public class TestManager {
         };
         if (test == null) return;
         test.startTest();
-
     }
 }

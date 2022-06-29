@@ -12,7 +12,7 @@ import java.util.Scanner;
 public abstract class Test {
     protected String apiName;
     protected String baseURLString;
-    protected String fullURLString; //nên lưu ý thuộc tính này để gửi request nếu url cần phải bổ sung thêm route nhỏ (giá trị ví dụ: https://auctions-app-2.herokuapp.com/api/login)
+    protected String fullURLString; //nên lưu ý thuộc tính này để gửi request nếu url cần phải bổ sung thêm route nhỏ (ví dụ: https://auctions-app-2.herokuapp.com/api/login)
     protected ArrayList<UnitTest> unitTests;
 
     public Test(BaseURL baseURLObject, String apiName) {
@@ -22,47 +22,59 @@ public abstract class Test {
         this.unitTests = new ArrayList<>();
     }
 
-    protected void startTest() {
-        System.out.println(ANSI.YELLOW + "Preparing data for unit tests..." + ANSI.RESET);
-        try {
-            beforeAll();
-        } catch (Exception e) {
-//          TODO: need to comment out next line when finish
-            System.out.println(e.getMessage());
-            System.out.println(ANSI.RED + "Failed to prepare for unit tests!");
-            System.out.println("Try again later" + ANSI.RESET);
-            return;
-        }
-        initUnitTests();
-        introduceUnitTests();
-        if (this.unitTests.size() <= 0) {
-            System.out.println(ANSI.YELLOW + "This api has no test!" + ANSI.RESET);
-            return;
-        }
-        executeUnitTests();
-        try {
-            afterAll();
-        } catch (Exception e) {
-//          TODO: need to comment out next line when finish
-            System.out.println(e.getMessage());
-            System.out.println(ANSI.RED + "Failed to finish after unit tests!");
-            System.out.println("Try again later" + ANSI.RESET);
-        }
-    }
-
     //  phương thức này phải đc ghi đề ở class con
     protected abstract void initUnitTests();
 
     protected void beforeAll() throws IOException {
     }
 
+    private boolean handledBeforeAll() {
+        try {
+            beforeAll();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(ANSI.RED + "Failed to prepare unit tests!");
+            System.out.println("Try again later" + ANSI.RESET);
+            return false;
+        }
+    }
+
     protected void beforeEach() throws IOException {
+    }
+
+    void handledBeforeEach(int testId) throws IOException {
+        try {
+            beforeEach();
+        } catch (IOException e) {
+            System.out.println(ANSI.RED + "Failed to prepare unit test " + testId + ANSI.RESET);
+            throw e;
+        }
     }
 
     protected void afterAll() throws IOException {
     }
 
+    private void handledAfterAll() {
+        try {
+            afterAll();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(ANSI.RED + "Failed to finish after unit tests!");
+            System.out.println("Try again later" + ANSI.RESET);
+        }
+    }
+
     protected void afterEach() throws IOException {
+    }
+
+    void handledAfterEach(int testId) throws IOException {
+        try {
+            afterEach();
+        } catch (IOException e) {
+            System.out.println(ANSI.RED + "Failed to finish unit test " + testId + ANSI.RESET);
+            throw e;
+        }
     }
 
     private void introduceUnitTests() {
@@ -105,35 +117,41 @@ public abstract class Test {
         System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
     }
 
+    private boolean executeTestId(int testId) {
+        UnitTest unitTest = this.unitTests.get(testId - 1);
+        try {
+            return unitTest.executeTest(testId);
+        } catch (NullPointerException | IOException e) {
+            if (e.getClass().equals(IOException.class)) System.out.println(e.getMessage());
+            unitTest.forceFail();
+        }
+        return false;
+    }
+
     private void executeUnitTests() {
+        if (this.unitTests.size() <= 0) {
+            System.out.println(ANSI.YELLOW + "This api has no test!" + ANSI.RESET);
+            return;
+        }
+        System.out.println(ANSI.YELLOW + "Preparing unit tests..." + ANSI.RESET);
+        if (!handledBeforeAll()) return;
         ArrayList<Integer> chosenUnitTestList = takeChosenUnitTestIds();
-        System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api..." + ANSI.RESET);
+        System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api...\n" + ANSI.RESET);
         ArrayList<String> failedTestList = new ArrayList<>();
         for (Integer testId : chosenUnitTestList) {
-            UnitTest unitTest = this.unitTests.get(testId - 1);
-            try {
-                try {
-                    beforeEach();
-                } catch (IOException e) {
-                    System.out.println(ANSI.RED + "Failed to prepare unit test " + testId + ANSI.RESET);
-                    throw e;
-                }
-                unitTest.test();
-                try {
-                    afterEach();
-                } catch (IOException e) {
-                    System.out.println(ANSI.RED + "Failed to finish unit test " + testId + ANSI.RESET);
-                    throw e;
-                }
-            } catch (NullPointerException | IOException e) {
-//              TODO: need to comment out next line when finish
-                if (e.getClass().equals(IOException.class)) System.out.println(e.getMessage());
-                unitTest.forceFail();
-            }
-            if (!unitTest.judge(testId)) failedTestList.add(testId.toString());
+            boolean passed = this.executeTestId(testId);
+            if (!passed) failedTestList.add(testId.toString());
         }
+        handledAfterAll();
         notifyUnitTestsPassedOrFail(chosenUnitTestList.size(), failedTestList);
     }
+
+    protected void startTest() {
+        initUnitTests();
+        introduceUnitTests();
+        executeUnitTests();
+    }
+
 
     public String getFullURLString() {
         return fullURLString;

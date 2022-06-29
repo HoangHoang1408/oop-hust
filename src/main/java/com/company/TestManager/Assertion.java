@@ -6,17 +6,17 @@ import java.util.Arrays;
 
 // class chứa các phương thức thường dùng để thực hiện việc giả định
 public class Assertion {
-    private final String expectation;
     private final String defaultFailMessage = "Assertion failed error";
     private AssertionError assertionError;
     private Boolean check;
     private String expected;
     private String actual;
 
-    public Assertion(String expectation) {
-        this.expectation = expectation;
+    public Assertion() {
         this.check = true;
-        assertionError = null;
+        this.assertionError = null;
+        this.expected = null;
+        this.actual = null;
     }
 
     public <T> void assertEquals(T t1, T t2) {
@@ -80,19 +80,19 @@ public class Assertion {
         }
     }
 
-    public boolean judge(int i) {
-        if (check) {
-            notifyTestPassed(i);
-            return true;
-        }
-        notifyTestFailed(i);
-        printExpectedAndActual();
-        printStackTrace();
-        return false;
+    public boolean judge() {
+        return check;
     }
 
     public void forceFail() {
         this.check = false;
+    }
+
+    public void printJudgement() {
+        if (assertionError == null) return;
+        printExpectedAndActual();
+        printStackTrace();
+        System.out.println(ANSI.SINGLE_TAB + "--------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
     private <T1, T2> void setExpectedAndActual(T1 expected, T2 actual) {
@@ -101,24 +101,16 @@ public class Assertion {
     }
 
     private void printExpectedAndActual() {
-        System.out.println("\tExpected value: " + ANSI.RED + this.expected + ANSI.RESET);
-        System.out.println("\tActual value: " + ANSI.RED + this.actual + ANSI.RESET);
+        System.out.println(ANSI.DOUBLE_TAB + "Expected value: " + ANSI.RED + this.expected + ANSI.RESET);
+        System.out.println(ANSI.DOUBLE_TAB + "Actual value: " + ANSI.RED + this.actual + ANSI.RESET);
         System.out.println();
     }
 
     private void printStackTrace() {
         StackTraceElement[] stackTraceElements = this.assertionError.getStackTrace();
-        System.out.print(ANSI.SINGLE_TAB + this.assertionError.getMessage() + " at:");
-        System.out.println(ANSI.RED);
-        Arrays.stream(stackTraceElements, 2, stackTraceElements.length).forEach(e -> System.out.println(ANSI.DOUBLE_TAB + e));
-        System.out.println(ANSI.RESET);
-    }
-
-    private void notifyTestPassed(int i) {
-        System.out.println(ANSI.GREEN + i + ") " + this.expectation + " => Passed!" + ANSI.RESET);
-    }
-
-    private void notifyTestFailed(int i) {
-        System.out.println(ANSI.RED + i + ") " + this.expectation + " => Failed!" + ANSI.RESET);
+        System.out.println(ANSI.DOUBLE_TAB + this.assertionError.getMessage() + " at:");
+        System.out.print(ANSI.RED);
+        Arrays.stream(stackTraceElements, 2, stackTraceElements.length).forEach(e -> System.out.println(ANSI.TRIPLE_TAB + e));
+        System.out.print(ANSI.RESET);
     }
 }
