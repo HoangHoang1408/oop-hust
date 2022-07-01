@@ -14,7 +14,9 @@ public class GetNotificationUnitTest2 extends UnitTest {
     @Override
     public void test() throws IOException{
         String accessToken="fskdfnsdjflksdfjlskdfklksdfjlsdklfsdklfksl";
+
         GetNotificationsResponse res= Connection.sendGetRequest(fullURLString, this.params, GetNotificationsResponse.class, accessToken);
+
         this.assertion.assertEquals(res, null);
         this.assertion.assertEquals(res.code, 1004);
     }

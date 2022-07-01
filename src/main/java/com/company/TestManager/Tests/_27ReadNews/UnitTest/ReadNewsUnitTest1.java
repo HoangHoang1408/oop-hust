@@ -16,6 +16,7 @@ public class ReadNewsUnitTest1 extends UnitTest {
     public void test() throws IOException {
         ReadNewsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", this.params, ReadNewsResponse.class, getAccessToken());
         this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertEquals(res.data.is_read, "1");
     }
 }

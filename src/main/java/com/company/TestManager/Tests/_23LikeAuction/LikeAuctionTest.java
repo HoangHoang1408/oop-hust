@@ -15,5 +15,6 @@ public class LikeAuctionTest extends Test {
     @Override
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new LikeAuctionUnitTest1(this), new LikeAuctionUnitTest2(this)));
+
     }
 }

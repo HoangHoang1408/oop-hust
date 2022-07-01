@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ReadNotificationsUnitTest1 extends UnitTest {
     public ReadNotificationsUnitTest1(Test test) {
-        super(test, "Logined, Notice from refuse the auction from admin side");
+        super(test, "Logined, Response code should be 1000, Notice from refuse the auction from admin side");
     }
 
     @Override
