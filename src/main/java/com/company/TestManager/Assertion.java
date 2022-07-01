@@ -8,12 +8,12 @@ import java.util.Arrays;
 public class Assertion {
     private final String defaultFailMessage = "Assertion failed error";
     private AssertionError assertionError;
-    private Boolean check;
+    private Boolean pass;
     private String expected;
     private String actual;
 
     public Assertion() {
-        this.check = true;
+        this.pass = true;
         this.assertionError = null;
         this.expected = null;
         this.actual = null;
@@ -24,13 +24,13 @@ public class Assertion {
     }
 
     public <T> void assertEquals(T t1, T t2, String failMessage) {
-        if (!this.check) return;
+        if (!this.pass) return;
         try {
             assert (t1 == null && t2 == null) || (t1 != null && t1.equals(t2)) : failMessage;
         } catch (AssertionError e) {
             setExpectedAndActual(t2, t1);
             this.assertionError = e;
-            this.check = false;
+            this.pass = false;
         }
     }
 
@@ -39,13 +39,13 @@ public class Assertion {
     }
 
     public <T> void assertNotEquals(T t1, T t2, String failMessage) {
-        if (!this.check) return;
+        if (!this.pass) return;
         try {
             assert (t1 == null && t2 != null) || (t1 != null && !t1.equals(t2)) : failMessage;
         } catch (AssertionError e) {
             this.setExpectedAndActual(t2, t1);
             this.assertionError = e;
-            this.check = false;
+            this.pass = false;
         }
     }
 
@@ -54,14 +54,14 @@ public class Assertion {
     }
 
     public <T1, T2> void assertInstanceOf(T1 t1, Class<T2> cl, String failMessage) {
-        if (!this.check) return;
+        if (!this.pass) return;
         try {
             assert t1 != null && t1.getClass() == cl : failMessage;
         } catch (AssertionError e) {
             this.setExpectedAndActual(cl, t1);
             e.printStackTrace();
             this.assertionError = e;
-            this.check = false;
+            this.pass = false;
         }
     }
 
@@ -70,22 +70,22 @@ public class Assertion {
     }
 
     public void assertTrue(Boolean a, String failMessage) {
-        if (!this.check) return;
+        if (!this.pass) return;
         try {
             assert a : failMessage;
         } catch (AssertionError e) {
             this.setExpectedAndActual(true, false);
             this.assertionError = e;
-            this.check = false;
+            this.pass = false;
         }
     }
 
     public boolean judge() {
-        return check;
+        return pass;
     }
 
     public void forceFail() {
-        this.check = false;
+        this.pass = false;
     }
 
     public void printJudgement() {
@@ -110,7 +110,7 @@ public class Assertion {
         StackTraceElement[] stackTraceElements = this.assertionError.getStackTrace();
         System.out.println(ANSI.DOUBLE_TAB + this.assertionError.getMessage() + " at:");
         System.out.print(ANSI.RED);
-        Arrays.stream(stackTraceElements, 2, stackTraceElements.length).forEach(e -> System.out.println(ANSI.TRIPLE_TAB + e));
+        Arrays.stream(stackTraceElements, this.assertionError.getMessage().equals(this.defaultFailMessage) ? 2 : 1, stackTraceElements.length).forEach(e -> System.out.println(ANSI.TRIPLE_TAB + e));
         System.out.print(ANSI.RESET);
     }
 }

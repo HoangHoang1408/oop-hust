@@ -93,7 +93,7 @@ public abstract class UnitTest {
         System.out.println(ANSI.RED + i + ") " + this.expectation + " => Failed!" + ANSI.RESET);
         for (int j = 0; j < this.assertions.size(); j++) {
             System.out.println(ANSI.SINGLE_TAB + ANSI.YELLOW + "Repeated unit test " + (j + 1) + ":" + ANSI.RESET);
-            this.assertions.get(i).printJudgement();
+            this.assertions.get(j).printJudgement();
         }
     }
 
