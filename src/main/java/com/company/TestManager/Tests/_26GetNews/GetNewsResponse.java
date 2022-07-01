@@ -8,10 +8,10 @@ public class GetNewsResponse extends BaseResponse {
     public Data data;
 
     public static class Data{
-        public ArrayList<New> news;
-        public String total;
+       public ArrayList<News> news;
+       public String total;
     }
-    public static class New{
+    public static class News{
         public String user_id;
         public String title;
         public String content;
