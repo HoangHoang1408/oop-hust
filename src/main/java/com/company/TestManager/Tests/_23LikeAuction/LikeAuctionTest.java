@@ -3,6 +3,7 @@ package com.company.TestManager.Tests._23LikeAuction;
 import com.company.BaseURL;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._23LikeAuction.UnitTest.LikeAuctionUnitTest1;
+import com.company.TestManager.Tests._23LikeAuction.UnitTest.LikeAuctionUnitTest2;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public class LikeAuctionTest extends Test {
 
     @Override
     protected void initUnitTests() {
-        this.unitTests.addAll(List.of(new LikeAuctionUnitTest1(this)));
+        this.unitTests.addAll(List.of(new LikeAuctionUnitTest1(this), new LikeAuctionUnitTest2(this)));
     }
 }
