@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class GetListCommentUnitTest1 extends UnitTest {
     public GetListCommentUnitTest1(Test test) {
-        super(test, "Logged in, the auction's comment book");
+        super(test, "Response code should be 1000, the auction's comment book");
     }
 
     @Override
