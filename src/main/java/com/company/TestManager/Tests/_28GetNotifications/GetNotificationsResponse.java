@@ -20,6 +20,5 @@ public class GetNotificationsResponse extends BaseResponse {
         public String updated_at;
         public String type;
         public String is_read;
-
     }
 }

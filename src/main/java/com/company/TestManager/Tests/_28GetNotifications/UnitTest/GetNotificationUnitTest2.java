@@ -19,5 +19,6 @@ public class GetNotificationUnitTest2 extends UnitTest {
 
         this.assertion.assertEquals(res, null);
         this.assertion.assertEquals(res.code, 1004);
+
     }
 }

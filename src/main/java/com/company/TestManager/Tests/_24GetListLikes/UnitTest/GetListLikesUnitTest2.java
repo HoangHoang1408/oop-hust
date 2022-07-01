@@ -17,5 +17,6 @@ public class GetListLikesUnitTest2 extends UnitTest {
         GetListLikesResponse res= Connection.sendGetRequest(fullURLString, this.params, GetListLikesResponse.class, accessToken);
         this.assertion.assertEquals(res, null);
         this.assertion.assertEquals(res.code, 1004);
+
     }
 }

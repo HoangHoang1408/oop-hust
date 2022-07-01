@@ -15,6 +15,5 @@ public class GetListLikesTest extends Test {
     @Override
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new GetListLikesUnitTest1(this), new GetListLikesUnitTest2(this)));
-
     }
 }

@@ -17,6 +17,7 @@ public class ReadNotificationsUnitTest1 extends UnitTest {
         ReadNotificationsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", this.params, ReadNotificationsResponse.class, getAccessToken());
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertNotEquals(res.data, null);
+
     }
 
 }

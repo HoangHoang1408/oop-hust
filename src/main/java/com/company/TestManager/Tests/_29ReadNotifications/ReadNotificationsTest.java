@@ -14,5 +14,6 @@ public class ReadNotificationsTest extends Test {
     @Override
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new ReadNotificationsUnitTest1(this)));
+
     }
 }

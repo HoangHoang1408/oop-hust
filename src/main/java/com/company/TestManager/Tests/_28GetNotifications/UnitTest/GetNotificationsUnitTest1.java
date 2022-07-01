@@ -18,5 +18,6 @@ public class GetNotificationsUnitTest1 extends UnitTest {
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertNotEquals(res.data,null);
+
     }
 }
