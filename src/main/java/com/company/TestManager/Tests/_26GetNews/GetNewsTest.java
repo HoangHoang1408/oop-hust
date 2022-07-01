@@ -14,6 +14,7 @@ public class GetNewsTest extends Test {
     @Override
     protected void initUnitTests() {
         this.unitTests.addAll(List.of(new GetNewsUnitTest1(this)));
+
     }
 
 }

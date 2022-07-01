@@ -18,5 +18,7 @@ public class GetNewsResponse extends BaseResponse {
         public String created_at;
         public String updated_at;
 
+
+
     }
 }
