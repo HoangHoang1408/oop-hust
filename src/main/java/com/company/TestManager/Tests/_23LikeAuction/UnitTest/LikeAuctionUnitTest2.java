@@ -14,10 +14,11 @@ public class LikeAuctionUnitTest2 extends UnitTest {
     @Override
     public void test() throws IOException{
         String accessToken= "sdfijosdfjosfjossdfsdfkpospodkfposdkfoewr9034jisofjosdjfois";
+
         LikeAuctionResponse res= Connection.sendPostRequest(fullURLString+"/5", this.params, LikeAuctionResponse.class, accessToken);
+
         this.assertion.assertEquals(res, null);
+        this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertEquals(res.code, 1004);
-
-
     }
 }

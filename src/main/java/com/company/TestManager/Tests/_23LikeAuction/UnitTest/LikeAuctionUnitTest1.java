@@ -17,9 +17,9 @@ public class LikeAuctionUnitTest1 extends UnitTest {
         LikeAuctionResponse res = Connection.sendPostRequest(this.fullURLString + "/5", this.params, LikeAuctionResponse.class, getAccessToken());
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
-        this.assertion.assertNotEquals(res.message, null);
-        this.assertion.assertNotEquals(res.data, null);
-
-
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertTrue(res.data.user_id.length() > 0);
+        this.assertion.assertTrue(res.data.auction_id.length() > 0);
+        this.assertion.assertNotEquals(res.data.is_liked, null);
     }
 }

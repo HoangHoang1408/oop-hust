@@ -23,10 +23,12 @@ public class CreateCommentUnitTest2 extends UnitTest {
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertTrue(res.message.length() > 0);
-        this.assertion.assertInstanceOf(res.message, String.class);
         this.assertion.assertNotEquals(res.data, null);
         this.assertion.assertTrue(Integer.parseInt(res.data.total) >= 1);
-
-
+        this.assertion.assertTrue(res.data.auction_id.length() > 0);
+        this.assertion.assertTrue(res.data.content.length() > 0);
+        this.assertion.assertTrue(res.data.update_at.length() > 0);
+        this.assertion.assertTrue(res.data.user_id.length() > 0);
+        this.assertion.assertTrue(Integer.parseInt(res.data.total) >= 1);
     }
 }

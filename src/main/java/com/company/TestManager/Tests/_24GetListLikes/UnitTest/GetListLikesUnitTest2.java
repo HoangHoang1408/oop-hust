@@ -14,9 +14,11 @@ public class GetListLikesUnitTest2 extends UnitTest {
     @Override
     public void test() throws IOException{
         String accessToken="asfpdsfopdsofpdsfpodsifpdsofpdofpsodfpsod";
+
         GetListLikesResponse res= Connection.sendGetRequest(fullURLString, this.params, GetListLikesResponse.class, accessToken);
+
         this.assertion.assertEquals(res, null);
         this.assertion.assertEquals(res.code, 1004);
-
+        this.assertion.assertTrue(res.message.length() > 0);
     }
 }

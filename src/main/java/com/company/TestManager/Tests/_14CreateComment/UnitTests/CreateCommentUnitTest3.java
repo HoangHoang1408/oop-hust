@@ -18,9 +18,11 @@ public class CreateCommentUnitTest3 extends UnitTest {
         this.params.put("content", comment);
         this.params.put("comment_last_id", "10");
         String accessToken = "djsldfgdfdsfsdgdfwrong214fgjksldfgjsdaNiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3fwpMeJf36POk6yJV_adQssw5cdgjdfgdadasdwdwdadeawklzfg";
+
         CreateCommentResponse res = Connection.sendPostRequest(this.fullURLString + "/1", this.params, CreateCommentResponse.class, accessToken);
 
         this.assertion.assertEquals(res.code, 1004);
+        this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertEquals(res.data, null);
     }
 }
