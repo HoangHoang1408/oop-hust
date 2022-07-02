@@ -5,6 +5,7 @@ import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
+import java.util.stream.IntStream;
 
 public class GetListAuctionsUnitTest1 extends UnitTest {
     public GetListAuctionsUnitTest1(Test test) {
@@ -20,5 +21,6 @@ public class GetListAuctionsUnitTest1 extends UnitTest {
         GetListAuctionsResponse res = this.sendGetRequest(GetListAuctionsResponse.class);
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertTrue(res.data.auctions.size() <= Integer.parseInt(count));
+        this.assertion.assertTrue(res.data.auctions.stream().allMatch(auction -> auction.auction_id != null && auction.selling_user_id != null && auction.title.length() > 0 && IntStream.range(1, 7).boxed().toList().contains(Integer.parseInt(auction.statusId))));
     }
 }

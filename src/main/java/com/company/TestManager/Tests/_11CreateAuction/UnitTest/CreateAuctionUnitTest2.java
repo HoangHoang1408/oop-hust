@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class CreateAuctionUnitTest2 extends UnitTest {
     public CreateAuctionUnitTest2(Test test) {
-        super(test, "not input yet, Server will return code 1004");
+        super(test, "Server returns code 1004 when user does not login");
     }
 
     @Override

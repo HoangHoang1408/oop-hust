@@ -4,35 +4,38 @@ import com.company.constants.ANSI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 // abstract class của các test (các class unit test khác phải kế thừa class này)
 public abstract class UnitTest {
-    private final Test test;
-    private final ArrayList<Assertion> assertions;
+    private final Test testClass;
+    private final List<List<String>> judgmentMessages;
     protected String expectation;
     protected HashMap<String, String> params;
     protected String fullURLString;
     protected String baseURLString;
     protected Assertion assertion;
+
     protected Integer numOfRepetitions;
     protected Integer totalRepeatedUnitTestPassed;
 
-    public UnitTest(Test test, String expectation, Integer numOfRepetitions) {
-        this.test = test;
+    public UnitTest(Test testClass, String expectation, Integer numOfRepetitions) {
+        this.testClass = testClass;
         this.params = new HashMap<>();
-        this.fullURLString = test.getFullURLString();
-        this.baseURLString = test.getBaseUrlString();
+        this.fullURLString = testClass.getFullURLString();
+        this.baseURLString = testClass.getBaseUrlString();
         this.expectation = expectation;
         this.assertion = new Assertion();
         this.numOfRepetitions = numOfRepetitions;
-        this.assertions = new ArrayList<>();
+        this.judgmentMessages = new ArrayList<>();
         this.totalRepeatedUnitTestPassed = 0;
     }
 
-    public UnitTest(Test test, String expectation) {
-        this(test, expectation, 1);
+    public UnitTest(Test testClass, String expectation) {
+        this(testClass, expectation, 1);
     }
 
 
@@ -66,19 +69,29 @@ public abstract class UnitTest {
     //    hàm bắt buộc phải ghi đè ở lớp con
     protected abstract void test() throws IOException;
 
-    protected boolean executeTest(int id) throws IOException {
+    protected boolean executeTest(int id) {
         for (int i = 0; i < numOfRepetitions; i++) {
-            this.test.handledBeforeEach(id);
-            this.test();
-            this.test.handledAfterEach(id);
-            this.totalRepeatedUnitTestPassed += this.assertion.judge() ? 1 : 0;
-            this.assertions.add(this.assertion);
-            this.assertion = new Assertion();
+            try {
+                this.testClass.handledBeforeEach(id);
+                this.test();
+                this.testClass.handledAfterEach(id);
+                this.totalRepeatedUnitTestPassed += this.assertion.judge() ? 1 : 0;
+                this.judgmentMessages.add(this.assertion.getJudgementString());
+                this.assertion = new Assertion();
+            } catch (NullPointerException | IOException e) {
+                ArrayList<String> temp = new ArrayList<>();
+                temp.add(ANSI.SINGLE_TAB + e.getMessage());
+                temp.addAll(Arrays.stream(e.getStackTrace()).map(v -> ANSI.RED + ANSI.DOUBLE_TAB + v + ANSI.RESET).toList());
+                this.judgmentMessages.add(temp);
+                this.forceFail();
+            }
         }
-        boolean passed = totalRepeatedUnitTestPassed.equals(this.numOfRepetitions);
-        if (passed) notifyTestPassed(id);
-        else notifyTestFailed(id);
-        return passed;
+        if (totalRepeatedUnitTestPassed.equals(this.numOfRepetitions)) {
+            notifyTestPassed(id);
+            return true;
+        }
+        notifyTestFailed(id);
+        return false;
     }
 
     public void forceFail() {
@@ -86,14 +99,16 @@ public abstract class UnitTest {
     }
 
     private void notifyTestPassed(int i) {
-        System.out.println(ANSI.GREEN + i + ") " + this.expectation + " => Passed!" + ANSI.RESET);
+        System.out.println(ANSI.GREEN + i + ") " + this.expectation + " (repeated " + this.numOfRepetitions + (this.numOfRepetitions == 1 ? " time)" : " times)") + " => Passed!" + ANSI.RESET + "\n");
     }
 
     private void notifyTestFailed(int i) {
         System.out.println(ANSI.RED + i + ") " + this.expectation + " => Failed!" + ANSI.RESET);
-        for (int j = 0; j < this.assertions.size(); j++) {
-            System.out.println(ANSI.SINGLE_TAB + ANSI.YELLOW + "Repeated unit test " + (j + 1) + ":" + ANSI.RESET);
-            this.assertions.get(j).printJudgement();
+        for (int j = 0; j < this.judgmentMessages.size(); j++) {
+            if (this.judgmentMessages.size() > 1)
+                System.out.println(ANSI.SINGLE_TAB + ANSI.YELLOW + "Repeated unit test " + (j + 1) + ":" + ANSI.RESET);
+            this.judgmentMessages.get(j).forEach(System.out::println);
+            System.out.println(ANSI.SINGLE_TAB + ANSI.CLEAR_LINE);
         }
     }
 

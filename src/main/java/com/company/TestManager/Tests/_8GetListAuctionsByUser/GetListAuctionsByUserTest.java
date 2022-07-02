@@ -4,7 +4,6 @@ import com.company.BaseURL;
 import com.company.TestManager.Connection;
 import com.company.TestManager.Objects.User;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._11CreateAuction.CreateAuctionTest;
 import com.company.TestManager.Tests._2Login.LoginResponse;
 import com.company.TestManager.Tests._6GetListAuctions.GetListAuctionsResponse;
 import com.company.TestManager.UnitTest;
@@ -17,6 +16,7 @@ import java.util.List;
 public class GetListAuctionsByUserTest extends Test {
     public static User userTestData;
     public static String accessTokenTestData;
+    public static String auctionId;
     public static HashMap<String, String> defaultParams = new HashMap<>();
 
     public GetListAuctionsByUserTest(BaseURL baseURL, String apiName) {
@@ -38,12 +38,13 @@ public class GetListAuctionsByUserTest extends Test {
         GetListAuctionsByUserTest.accessTokenTestData = res.data.access_token;
 
         // create auctions to test
-        HashMap<String, String> tempParams2 = CreateAuctionTest.generateDefaultParams();
+//        HashMap<String, String> tempParams2 = CreateAuctionTest.generateDefaultParams();
+//        CreateAuctionResponse createAuctionRes = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, tempParams2, CreateAuctionResponse.class, GetListAuctionsByUserTest.accessTokenTestData);
+//        GetListAuctionsByUserTest.auctionId = createAuctionRes.data.auction_id;
     }
 
     @Override
     protected void initUnitTests() {
-
         this.unitTests.addAll(List.of(
                 new GetListAuctionsByUserUnitTest1(this),
                 new GetListAuctionsByUserUnitTest2(this),

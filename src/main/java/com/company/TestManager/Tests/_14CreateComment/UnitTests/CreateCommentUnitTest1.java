@@ -4,6 +4,7 @@ import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
 import com.company.TestManager.Tests._14CreateComment.CreateCommentResponse;
 import com.company.TestManager.UnitTest;
+import com.company.utils.Util;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class CreateCommentUnitTest1 extends UnitTest {
 
     @Override
     public void test() throws IOException {
-        String comment = "Hello from Hoang 9384578";
+        String comment = Util.randomAlphabetOrNumberString(5, 15);
         this.params.put("content", comment);
         this.params.put("comment_last_id", "10");
 

@@ -114,18 +114,7 @@ public abstract class Test {
         String color = totalTestsPassed == totalUnitTests ? ANSI.GREEN : ANSI.RED;
         System.out.println("\n" + color + "Total: " + totalTestsPassed + " of " + totalUnitTests + " tests passed!" + ANSI.RESET);
         if (failedTestList.size() <= 0) return;
-        System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed tests: " : "Failed test: ") + String.join(", ", failedTestList) + ANSI.RESET);
-    }
-
-    private boolean executeTestId(int testId) {
-        UnitTest unitTest = this.unitTests.get(testId - 1);
-        try {
-            return unitTest.executeTest(testId);
-        } catch (NullPointerException | IOException e) {
-            if (e.getClass().equals(IOException.class)) System.out.println(e.getMessage());
-            unitTest.forceFail();
-        }
-        return false;
+        System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed test ids: " : "Failed test id: ") + String.join(", ", failedTestList) + ANSI.RESET);
     }
 
     private void executeUnitTests() {
@@ -139,7 +128,7 @@ public abstract class Test {
         System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api...\n" + ANSI.RESET);
         ArrayList<String> failedTestList = new ArrayList<>();
         for (Integer testId : chosenUnitTestList) {
-            boolean passed = this.executeTestId(testId);
+            boolean passed = this.unitTests.get(testId - 1).executeTest(testId);
             if (!passed) failedTestList.add(testId.toString());
         }
         handledAfterAll();

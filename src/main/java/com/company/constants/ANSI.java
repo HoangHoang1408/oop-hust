@@ -11,4 +11,5 @@ public class ANSI {
     public static final String SINGLE_TAB = "\t";
     public static final String DOUBLE_TAB = "\t\t";
     public static final String TRIPLE_TAB = "\t\t\t";
+    public static final String CLEAR_LINE = "-------------------------------------------------------------------------------------------------------------------------------\n";
 }
