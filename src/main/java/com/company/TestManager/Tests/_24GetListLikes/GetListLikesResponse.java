@@ -20,5 +20,6 @@ public class GetListLikesResponse extends BaseResponse {
         public String status;
         public ArrayList<Category> categories;
         public Boolean is_liked;
+
     }
 }

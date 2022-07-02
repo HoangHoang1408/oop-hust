@@ -19,11 +19,11 @@ public class CreateItemUnitTest10 extends UnitTest {
     @Override
     public void test() throws IOException {
         this.params = CreateAuctionTest.generateDefaultParams();
-        CreateAuctionResponse resAuction = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, this.getAccessToken());
+        CreateAuctionResponse resAuction = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, CreateItemTest.accessToken);
 
         this.params = CreateItemTest.generateDefaultParams();
         this.params.put("description", "");
-        CreateItemResponse res = Connection.sendPostRequest(this.fullURLString + "/" + resAuction.data.auction_id, this.params, CreateItemResponse.class, this.getAccessToken());
+        CreateItemResponse res = Connection.sendPostRequest(this.fullURLString + "/" + resAuction.data.auction_id, this.params, CreateItemResponse.class, CreateItemTest.accessToken);
 
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1001);

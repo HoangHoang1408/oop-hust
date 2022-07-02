@@ -2,6 +2,9 @@ package com.company.TestManager.Tests._18GetListBids;
 
 import com.company.BaseURL;
 import com.company.TestManager.Test;
+import com.company.TestManager.Tests._18GetListBids.UnitTest.GetListBidsUnitTest1;
+
+import java.util.List;
 
 public class GetListBidsTest extends Test {
     public GetListBidsTest(BaseURL baseURL, String apiName) {
@@ -10,6 +13,6 @@ public class GetListBidsTest extends Test {
 
     @Override
     protected void initUnitTests() {
-
+        this.unitTests.addAll(List.of(new GetListBidsUnitTest1(this)));
     }
 }
