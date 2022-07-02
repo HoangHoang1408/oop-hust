@@ -21,6 +21,7 @@ public class CreateCommentUnitTest4 extends UnitTest {
         CreateCommentResponse2 res = Connection.sendPostRequest(this.fullURLString + "/1", this.params, CreateCommentResponse2.class, accessToken);
 
         this.assertion.assertEquals(res.code, 1004);
+        this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertEquals(res.data, null);
     }
 }

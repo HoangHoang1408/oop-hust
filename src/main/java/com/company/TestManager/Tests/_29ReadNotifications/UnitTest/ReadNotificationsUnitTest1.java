@@ -15,9 +15,11 @@ public class ReadNotificationsUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
         ReadNotificationsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", this.params, ReadNotificationsResponse.class, getAccessToken());
-        this.assertion.assertNotEquals(res, null);
-        this.assertion.assertNotEquals(res.data, null);
 
+        this.assertion.assertNotEquals(res, null);
+        this.assertion.assertEquals(res.code, 1000);
+        this.assertion.assertTrue(res.data.auction_id.length() > 0);
+        this.assertion.assertTrue(Integer.parseInt(res.data.is_read) >= 0);
     }
 
 }

@@ -9,14 +9,17 @@ import java.io.IOException;
 
 public class ReadNewsUnitTest1 extends UnitTest {
     public ReadNewsUnitTest1(Test test) {
-        super(test, "Read the notice from the version auction");
+        super(test, "Response code should be 1000, Read the notice from the version auction");
     }
 
     @Override
     public void test() throws IOException {
         ReadNewsResponse res = Connection.sendGetRequest(this.fullURLString + "/1", this.params, ReadNewsResponse.class, getAccessToken());
+
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
-        this.assertion.assertEquals(res.data.is_read, "1");
+        this.assertion.assertTrue(res.message.length() > 0);
+        this.assertion.assertNotEquals(res.data.is_read, null);
+        this.assertion.assertTrue(res.data.new_id.length() > 0);
     }
 }
