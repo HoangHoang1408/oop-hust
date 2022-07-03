@@ -1,7 +1,8 @@
 package com.company.TestManager;
 
-import com.company.TestManager.Tests._2Login.LoginResponse;
-import com.company.constants.Constant;
+import com.company.TestManager.TestAPIs._2Login.LoginResponse;
+import com.company.constants.AccountConstants;
+import com.company.constants.EndpointConstants;
 import com.company.constants.HttpMethod;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -106,9 +107,9 @@ public class Connection {
     public static String getAccessToken(String baseUrl) {
         try {
             HashMap<String, String> tempParams = new HashMap<>();
-            tempParams.put("email", "Cube@gmail.com");
-            tempParams.put("password", "12345678");
-            LoginResponse res = Connection.sendPostRequest(baseUrl + "/" + Constant.LOG_IN, tempParams, LoginResponse.class, null);
+            tempParams.put("email", AccountConstants.userEmail);
+            tempParams.put("password", AccountConstants.userPassword);
+            LoginResponse res = Connection.sendPostRequest(baseUrl + "/" + EndpointConstants.LOG_IN, tempParams, LoginResponse.class, null);
             return res.data.access_token;
         } catch (IOException e) {
             System.out.println("Can not get access token!");

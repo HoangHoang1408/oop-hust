@@ -61,7 +61,6 @@ public class Assertion {
             assert t1 != null && t1.getClass() == cl : failMessage;
         } catch (AssertionError e) {
             this.setExpectedAndActual(cl, t1);
-            e.printStackTrace();
             this.assertionError = e;
             this.pass = false;
         }

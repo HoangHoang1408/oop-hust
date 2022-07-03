@@ -1,12 +1,12 @@
 package com.company;
 
-import com.company.constants.Constant;
+import com.company.constants.EndpointConstants;
 
 public class BaseURL {
     private String baseURL;
 
     public BaseURL() {
-        this.baseURL = Constant.DEFAULT_BASE_URL;
+        this.baseURL = EndpointConstants.DEFAULT_BASE_URL;
     }
 
     public String getBaseURL() {

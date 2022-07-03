@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.TestManager.TestManager;
 import com.company.constants.ANSI;
-import com.company.constants.Constant;
+import com.company.constants.EndpointConstants;
 
 import java.util.Scanner;
 
@@ -61,15 +61,17 @@ public class App {
 
     private void changeBaseUrl() {
         System.out.println("Input Base URL ID to set or input 0 to enter new Base URL string:");
-        Constant.baseUrls.forEach((i, s) -> System.out.println(i + ") " + s + (i == 1 ? " (Default)" : "")));
+        System.out.println(ANSI.YELLOW);
+        EndpointConstants.baseUrls.forEach((i, s) -> System.out.println(i + ") " + s + (i == 1 ? " (Default)" : "")));
+        System.out.println(ANSI.RESET);
         int option = getOption("Your choice: ");
-        if (option != 0) this.baseUrl.setBaseURL(Constant.baseUrls.get(option));
+        if (option != 0) this.baseUrl.setBaseURL(EndpointConstants.baseUrls.get(option));
         else {
             System.out.println("New Base URL string:");
             String baseURL = scanner.nextLine();
             if (baseURL != null && !baseURL.equals("")) {
                 this.baseUrl.setBaseURL(baseURL);
-                Constant.baseUrls.put(Constant.baseUrls.size() + 1, baseURL);
+                EndpointConstants.baseUrls.put(EndpointConstants.baseUrls.size() + 1, baseURL);
             } else {
                 System.out.println("Will use default Base URL!");
             }
@@ -80,8 +82,8 @@ public class App {
     private void testAPI() {
         System.out.print(ANSI.YELLOW);
         System.out.println("\nSelect API to test: ");
-        for (int i = 1; i <= Constant.paths.size(); i++) {
-            System.out.println(i + ") " + Constant.testNames.get(i));
+        for (int i = 1; i <= EndpointConstants.paths.size(); i++) {
+            System.out.println(i + ") " + EndpointConstants.testNames.get(i));
         }
         System.out.print(ANSI.RESET);
         int testId = getOption("Input api Id (integer):");
