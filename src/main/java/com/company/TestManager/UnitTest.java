@@ -80,8 +80,8 @@ public abstract class UnitTest {
                 this.assertion = new Assertion();
             } catch (NullPointerException | IOException e) {
                 ArrayList<String> temp = new ArrayList<>();
-                temp.add(ANSI.SINGLE_TAB + e.getMessage());
-                temp.addAll(Arrays.stream(e.getStackTrace()).map(v -> ANSI.RED + ANSI.DOUBLE_TAB + v + ANSI.RESET).toList());
+                temp.add(ANSI.DOUBLE_TAB + e.getMessage());
+                temp.addAll(Arrays.stream(e.getStackTrace()).map(v -> ANSI.RED + ANSI.TRIPLE_TAB + v + ANSI.RESET).toList());
                 this.judgmentMessages.add(temp);
                 this.forceFail();
             }

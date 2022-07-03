@@ -32,5 +32,6 @@ public class SignUpUnitTest1 extends UnitTest {
         this.assertion.assertEquals(user.address, this.params.get("address"));
         this.assertion.assertEquals(user.email, this.params.get("email"));
         this.assertion.assertEquals(user.phone, this.params.get("phone"));
+        this.assertion.assertEquals(user.avatar, this.params.get("avatar"));
     }
 }

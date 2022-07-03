@@ -16,6 +16,7 @@ public class EndpointConstants {
     public static final String GET_LIST_AUCTIONS_BY_TYPE = "auctions/listAuctions";
     public static final String GET_DETAILS_AUCTIONS = "auctions/detail";
     public static final String CREATE_AUCTION = "auctions/create";
+    public static final String CHANGE_PASSWORD = "changepass";
     public static final String EDIT_AUCTION = "auctions/edit";
     public static final String CREATE_ITEM = "items/create";
     public static final String CREATE_COMMENT = "comments/create";

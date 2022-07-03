@@ -95,6 +95,10 @@ public class Connection {
         return res;
     }
 
+    public static <T> T sendPostRequest(String fullURLString, HashMap<String, String> params, Class<T> cl) throws IOException {
+        return sendPostRequest(fullURLString, params, cl, null);
+    }
+
 
     //    phương thức gửi get request cần dùng ở các class khác
     public static <T> T sendGetRequest(String fullURLString, HashMap<String, String> params, Class<T> cl, String accessToken) throws IOException {
@@ -104,16 +108,24 @@ public class Connection {
         return res;
     }
 
-    public static String getAccessToken(String baseUrl) {
+    public static <T> T sendGetRequest(String fullURLString, HashMap<String, String> params, Class<T> cl) throws IOException {
+        return sendGetRequest(fullURLString, params, cl, null);
+    }
+
+    public static String getAccessToken(String baseUrl, String email, String password) {
         try {
             HashMap<String, String> tempParams = new HashMap<>();
-            tempParams.put("email", AccountConstants.userEmail);
-            tempParams.put("password", AccountConstants.userPassword);
+            tempParams.put("email", email);
+            tempParams.put("password", password);
             LoginResponse res = Connection.sendPostRequest(baseUrl + "/" + EndpointConstants.LOG_IN, tempParams, LoginResponse.class, null);
             return res.data.access_token;
         } catch (IOException e) {
             System.out.println("Can not get access token!");
             return null;
         }
+    }
+
+    public static String getAccessToken(String baseUrl) {
+        return getAccessToken(baseUrl, AccountConstants.USER_EMAIL, AccountConstants.USER_PASSWORD);
     }
 }

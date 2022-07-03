@@ -26,7 +26,8 @@ public class SignUpTest extends Test {
                 "re_pass", password,
                 "name", name,
                 "phone", phone,
-                "address", address
+                "address", address,
+                "avatar", "https://images.everydayhealth.com/images/pet-health/cs-pet-health-cat-exercises-1440x810.jpg"
         ));
     }
 
@@ -47,24 +48,4 @@ public class SignUpTest extends Test {
                 new SignUpUnitTest12(this)
         ));
     }
-
-//    @Override
-//    protected void beforeAll() throws IOException {
-//        System.out.println("Before all run");
-//    }
-//
-//    @Override
-//    protected void afterEach() throws IOException {
-//        System.out.println("After each run");
-//    }
-//
-//    @Override
-//    protected void afterAll() throws IOException {
-//        System.out.println("After all run");
-//    }
-//
-//    @Override
-//    protected void beforeEach() throws IOException {
-//        System.out.println("Before each run");
-//    }
 }
