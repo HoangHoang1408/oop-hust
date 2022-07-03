@@ -1,9 +1,9 @@
-package com.company.TestManager.Tests._13CreateItem.UnitTest;
+package com.company.TestManager.TestAPIs._13CreateItem.UnitTest;
 
 import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._13CreateItem.CreateItemResponse;
-import com.company.TestManager.Tests._13CreateItem.CreateItemTest;
+import com.company.TestManager.TestAPIs._13CreateItem.CreateItemResponse;
+import com.company.TestManager.TestAPIs._13CreateItem.CreateItemTest;
 import com.company.TestManager.UnitTest;
 import com.company.utils.Util;
 

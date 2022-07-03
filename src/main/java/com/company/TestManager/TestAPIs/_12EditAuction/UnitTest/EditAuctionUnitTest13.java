@@ -1,12 +1,12 @@
-package com.company.TestManager.Tests._12EditAuction.UnitTest;
+package com.company.TestManager.TestAPIs._12EditAuction.UnitTest;
 
 import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._11CreateAuction.CreateAuctionResponse;
-import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
-import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
+import com.company.TestManager.TestAPIs._11CreateAuction.CreateAuctionResponse;
+import com.company.TestManager.TestAPIs._12EditAuction.EditAuctionResponse;
+import com.company.TestManager.TestAPIs._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
-import com.company.constants.Constant;
+import com.company.constants.EndpointConstants;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class EditAuctionUnitTest13 extends UnitTest {
     @Override
     public void test() throws IOException {
         this.params = EditAuctionTest.generateDefaultParams();
-        CreateAuctionResponse res = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, EditAuctionTest.access_token);
+        CreateAuctionResponse res = Connection.sendPostRequest(this.baseURLString + "/" + EndpointConstants.CREATE_AUCTION, this.params, CreateAuctionResponse.class, EditAuctionTest.access_token);
 
         EditAuctionResponse resEdit = Connection.sendPostRequest(this.fullURLString + "/" + EditAuctionTest.idAuctionTest, this.params, EditAuctionResponse.class, EditAuctionTest.access_token);
 

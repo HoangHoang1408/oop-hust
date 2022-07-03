@@ -1,9 +1,9 @@
-package com.company.TestManager.Tests._12EditAuction.UnitTest;
+package com.company.TestManager.TestAPIs._12EditAuction.UnitTest;
 
 import com.company.TestManager.Connection;
 import com.company.TestManager.Test;
-import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
-import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
+import com.company.TestManager.TestAPIs._12EditAuction.EditAuctionResponse;
+import com.company.TestManager.TestAPIs._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
 import com.company.utils.Util;
 
