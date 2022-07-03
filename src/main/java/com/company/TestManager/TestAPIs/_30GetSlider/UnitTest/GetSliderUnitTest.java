@@ -18,6 +18,6 @@ public class GetSliderUnitTest extends UnitTest {
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertInstanceOf(res.message, String.class);
         this.assertion.assertNotEquals(res.data, null);
-
+        this.assertion.assertTrue(res.data.stream().allMatch(data -> data.slider_id != null));
     }
 }

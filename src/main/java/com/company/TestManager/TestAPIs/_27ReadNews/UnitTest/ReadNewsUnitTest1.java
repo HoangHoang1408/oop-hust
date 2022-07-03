@@ -21,5 +21,10 @@ public class ReadNewsUnitTest1 extends UnitTest {
         this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertNotEquals(res.data.is_read, null);
         this.assertion.assertTrue(res.data.new_id.length() > 0);
+        this.assertion.assertTrue(res.data.content.length() > 0);
+        this.assertion.assertNotEquals(res.data.user_id, null);
+        this.assertion.assertTrue(res.data.title.length() > 0);
+        this.assertion.assertTrue(res.data.user_create_name.length() > 0);
+        this.assertion.assertNotEquals(res.data.updated_at, null);
     }
 }

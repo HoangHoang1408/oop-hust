@@ -19,7 +19,7 @@ public class TotalLikesOfAuctionUnitTest1 extends UnitTest {
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertTrue(res.message.length() > 0);
-        this.assertion.assertTrue(res.data.auction_id.length() > 0);
-        this.assertion.assertTrue(Integer.parseInt(res.data.auction_id) >=0 );
+        this.assertion.assertTrue(res.data.auction_id.equals("1"));
+        this.assertion.assertTrue(Integer.parseInt(res.data.total_liked) >= 0);
     }
 }
