@@ -22,6 +22,12 @@ public class CreateAuctionUnitTest1 extends UnitTest {
         this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertNotEquals(res.data, null);
 
+        this.assertion.assertEquals(res.data.category_id, this.params.get("category_id"));
+        this.assertion.assertEquals(res.data.start_date, this.params.get("start_date"));
+        this.assertion.assertEquals(res.data.end_date, this.params.get("end_date"));
+        this.assertion.assertEquals(res.data.title, this.params.get("title_ni"));
+
+
 
     }
 

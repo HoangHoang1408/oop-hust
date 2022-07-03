@@ -8,24 +8,21 @@ import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
-public class CreateItemUnitTest1 extends UnitTest  {
-    public CreateItemUnitTest1(Test test){super(test, "With correct params, response code should be 1000 and data should not be null ");}
+public class CreateItemUnitTest4 extends UnitTest  {
+    public CreateItemUnitTest4(Test test){super(test, "if the name field is not set, response code 1001 and data must be null ");}
 
     @Override
     public void test() throws IOException {
-
         this.params = CreateItemTest.generateDefaultParams();
+        this.params.put("name","");
         CreateItemResponse res = Connection.sendPostRequest(this.fullURLString + "/" + CreateItemTest.auction_idForCreateItem, this.params, CreateItemResponse.class, CreateItemTest.accessToken);
 
         this.assertion.assertNotEquals(res, null);
-        this.assertion.assertEquals(res.code, 1000);
-        this.assertion.assertTrue(res.message.length() > 0);
-        this.assertion.assertNotEquals(res.data, null);
+        this.assertion.assertEquals(res.code, 1001);
+        this.assertion.assertEquals(res.data, null);
 
-        this.assertion.assertEquals(res.data.name, this.params.get("name"));
-        this.assertion.assertEquals(res.data.series, this.params.get("series"));
-        this.assertion.assertEquals(res.data.description, this.params.get("description"));
-        this.assertion.assertEquals(res.data.brand_id, this.params.get("brand_id"));
+
+
 
 
     }

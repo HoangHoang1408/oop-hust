@@ -29,7 +29,7 @@ public class EndpointConstants {
     public static final String ACCEPT_MAX_BID = "accept";
     public static final String CONTACT_US = "contactUs";
     public static final String LIKE_AUCTION = "updateLike";
-    public static final String GET_LIST_LIKES = "likes/listLikes";
+    public static final String GET_LIST_LIKES = "listLikes";
     public static final String TOTAL_LIKES_OF_AUCTION = "totalLikes";
     public static final String GET_NEWS = "news";
     public static final String READ_NEWS = "news/read";

@@ -40,7 +40,7 @@ public abstract class Test {
         }
     }
 
-    protected void beforeEach() throws IOException {
+    protected void beforeEach() throws  IOException {
     }
 
     void handledBeforeEach(int testId) throws IOException {
