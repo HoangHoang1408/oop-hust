@@ -17,8 +17,8 @@ public class CreateAuctionTest extends Test {
     public static HashMap<String, String> generateDefaultParams() {
 
         String category_id = Util.randomNumberString(1, 1, 7);
-        String start_date = "2023-06-20 11:03:38";
-        String end_date = "2023-06-21 11:03:38";
+        String start_date = "2023/06/20 11:03";
+        String end_date = "2023/06/21 11:03";
         String title_ni = "Tui xach " + Util.randomAlphabetString(20);
         return new HashMap<>(Map.of(
                 "category_id", category_id,

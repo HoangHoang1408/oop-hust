@@ -17,7 +17,7 @@ public class EditAuctionUnitTest8 extends UnitTest {
     @Override
     public void test() throws IOException {
         this.params = EditAuctionTest.generateDefaultParams();
-        this.params.put("start_date", "2021-06-12 00:00:00");
+        this.params.put("start_date", "2021/06/12 00:00");
 
         EditAuctionResponse res = Connection.sendPostRequest(this.fullURLString + "/" + EditAuctionTest.idAuctionTest, this.params, EditAuctionResponse.class, EditAuctionTest.access_token);
 
