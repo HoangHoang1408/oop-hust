@@ -5,7 +5,6 @@ import com.company.TestManager.Test;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionResponse;
 import com.company.TestManager.Tests._12EditAuction.EditAuctionTest;
 import com.company.TestManager.UnitTest;
-import com.company.utils.Util;
 
 import java.io.IOException;
 
@@ -20,7 +19,7 @@ public class EditAuctionUnitTest9 extends UnitTest {
         this.params = EditAuctionTest.generateDefaultParams();
         this.params.put("end_date", "");
 
-        EditAuctionResponse res = Connection.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(1, 60, 77), this.params, EditAuctionResponse.class, this.getAccessToken());
+        EditAuctionResponse res = Connection.sendPostRequest(this.fullURLString + "/" + EditAuctionTest.idAuctionTest, this.params, EditAuctionResponse.class, EditAuctionTest.access_token);
 
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1001);

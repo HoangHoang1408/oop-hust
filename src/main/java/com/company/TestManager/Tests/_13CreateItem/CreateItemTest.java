@@ -46,6 +46,10 @@ public class CreateItemTest extends Test {
         tempParams.put("password","12345678");
         LoginResponse res = Connection.sendPostRequest(Constant.DEFAULT_BASE_URL +"/" + Constant.LOG_IN, tempParams,LoginResponse.class, null   );
         CreateItemTest.accessToken = res.data.access_token;
+    }
+    @Override
+    protected void beforeEach() throws IOException{
+        HashMap<String,String> tempParams = new HashMap<>();
         tempParams = CreateAuctionTest.generateDefaultParams();
         CreateAuctionResponse resAuction = Connection.sendPostRequest(this.baseURLString +"/"+ Constant.CREATE_AUCTION,tempParams, CreateAuctionResponse.class, accessToken);
         CreateItemTest.auction_idForCreateItem = resAuction.data.auction_id;

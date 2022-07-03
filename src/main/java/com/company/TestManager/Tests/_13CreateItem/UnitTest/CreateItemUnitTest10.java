@@ -10,24 +10,37 @@ import com.company.TestManager.UnitTest;
 import com.company.constants.Constant;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class CreateItemUnitTest10 extends UnitTest {
+    HashMap<String,String> tempParams = new HashMap<>();
     public CreateItemUnitTest10(Test test) {
-        super(test, "if the description field is not set, response code 1001 and data must be null ");
+        super(test, "if the series field matches the existing one , response code 1001 and data must be null ");
     }
 
     @Override
     public void test() throws IOException {
-        this.params = CreateAuctionTest.generateDefaultParams();
-        CreateAuctionResponse resAuction = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, CreateItemTest.accessToken);
 
         this.params = CreateItemTest.generateDefaultParams();
-        this.params.put("description", "");
-        CreateItemResponse res = Connection.sendPostRequest(this.fullURLString + "/" + resAuction.data.auction_id, this.params, CreateItemResponse.class, CreateItemTest.accessToken);
+        tempParams.put("name", this.params.get("name"));
+        tempParams.put("starting_price", this.params.get("starting_price"));
+        tempParams.put("brand_id", this.params.get("brand_id"));
+        tempParams.put("description", this.params.get("description"));
+        tempParams.put("series", this.params.get("series"));
+        CreateItemResponse res1 = Connection.sendPostRequest(this.fullURLString + "/" + CreateItemTest.auction_idForCreateItem, this.params, CreateItemResponse.class, CreateItemTest.accessToken);
+
+        this.params = CreateAuctionTest.generateDefaultParams();
+        CreateAuctionResponse resAuction1 = Connection.sendPostRequest(this.baseURLString + "/" + Constant.CREATE_AUCTION, this.params, CreateAuctionResponse.class, CreateItemTest.accessToken);
+
+        CreateItemResponse res = Connection.sendPostRequest(this.fullURLString + "/" + resAuction1.data.auction_id, tempParams, CreateItemResponse.class, CreateItemTest.accessToken);
 
         this.assertion.assertNotEquals(res, null);
+
         this.assertion.assertEquals(res.code, 1001);
+
         this.assertion.assertEquals(res.data, null);
+
+
 
 
     }
