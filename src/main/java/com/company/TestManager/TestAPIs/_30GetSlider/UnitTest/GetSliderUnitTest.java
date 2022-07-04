@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class GetSliderUnitTest extends UnitTest {
     public GetSliderUnitTest(Test test) {
-        super(test, "the response code and message strings shall be not null as well as non-empty");
+        super(test, "the response code should be 1000 and message strings shall be not null as well as non-empty");
 
     }
 

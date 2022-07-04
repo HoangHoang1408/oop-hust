@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ReadNotificationsUnitTest1 extends UnitTest {
     public ReadNotificationsUnitTest1(Test test) {
-        super(test, "Logined, Response code should be 1000, Notice from refuse the auction from admin side");
+        super(test, "If user logged in, response code should be 1000 and user can read refused notification from admin side");
     }
 
     @Override

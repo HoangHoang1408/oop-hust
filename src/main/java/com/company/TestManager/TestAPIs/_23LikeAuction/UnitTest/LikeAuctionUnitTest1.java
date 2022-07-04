@@ -18,7 +18,7 @@ public class LikeAuctionUnitTest1 extends UnitTest {
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1000);
         this.assertion.assertTrue(res.message.length() > 0);
-        this.assertion.assertNotEquals(res.data.user_id.length(), null);
+        this.assertion.assertNotEquals(res.data.user_id, null);
         this.assertion.assertEquals(res.data.auction_id, "5");
         this.assertion.assertNotEquals(res.data.is_liked, true);
     }

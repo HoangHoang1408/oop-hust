@@ -7,8 +7,8 @@ import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
 
-public class GetNotificationUnitTest2 extends UnitTest {
-    public GetNotificationUnitTest2(Test test) {
+public class GetNotificationsUnitTest2 extends UnitTest {
+    public GetNotificationsUnitTest2(Test test) {
         super(test, "Not Loggined, code should be 1004, data should be null");
     }
 
