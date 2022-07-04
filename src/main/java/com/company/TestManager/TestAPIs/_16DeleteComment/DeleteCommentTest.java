@@ -4,22 +4,19 @@ import com.company.BaseURL;
 import com.company.TestManager.Connection;
 import com.company.TestManager.Objects.Comment;
 import com.company.TestManager.Test;
-import com.company.TestManager.TestAPIs._12EditAuction.EditAuctionTest;
 import com.company.TestManager.TestAPIs._14CreateComment.CreateCommentResponse;
 import com.company.TestManager.TestAPIs._14CreateComment.CreateCommentTest;
 import com.company.TestManager.TestAPIs._15GetListComments.GetListCommentResponse;
 import com.company.TestManager.TestAPIs._15GetListComments.GetListCommentsTest;
 import com.company.TestManager.TestAPIs._16DeleteComment.UnitTest.DeleteCommentUnitTest1;
-import com.company.TestManager.TestAPIs._17CreateBid.CreateBidTest;
-import com.company.TestManager.TestAPIs._18GetListBids.GetListBidsResponse;
+import com.company.TestManager.TestAPIs._16DeleteComment.UnitTest.DeleteCommentUnitTest2;
+import com.company.TestManager.TestAPIs._16DeleteComment.UnitTest.DeleteCommentUnitTest3;
 import com.company.TestManager.TestAPIs._2Login.LoginResponse;
 import com.company.constants.EndpointConstants;
-import com.company.utils.Util;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DeleteCommentTest extends Test {
     public DeleteCommentTest(BaseURL baseURL, String apiName) {
@@ -29,7 +26,9 @@ public class DeleteCommentTest extends Test {
     public static String comment_id;
     @Override
     protected void initUnitTests() {
-        this.unitTests.addAll(List.of(new DeleteCommentUnitTest1(this)));
+        this.unitTests.addAll(List.of(new DeleteCommentUnitTest1(this),
+                new DeleteCommentUnitTest2(this),
+                new DeleteCommentUnitTest3(this)));
     }
 
 

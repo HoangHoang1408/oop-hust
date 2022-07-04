@@ -3,6 +3,7 @@ package com.company.TestManager.TestAPIs._2Login.UnitTests;
 import com.company.TestManager.Test;
 import com.company.TestManager.TestAPIs._2Login.LoginResponse;
 import com.company.TestManager.UnitTest;
+import com.company.utils.Util;
 
 import java.io.IOException;
 
@@ -13,8 +14,8 @@ public class LoginUnitTest3 extends UnitTest {
 
     @Override
     public void test() throws IOException {
-        this.params.put("email", "thanh12345com");
-        this.params.put("password", "12345654sdf6");
+        this.params.put("email", Util.randomAlphabetOrNumberString(5, 5));
+        this.params.put("password", Util.randomAlphabetOrNumberString(4, 4));
 
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
 
