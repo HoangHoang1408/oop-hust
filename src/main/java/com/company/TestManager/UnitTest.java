@@ -77,14 +77,10 @@ public abstract class UnitTest {
                 this.testClass.handledBeforeEach(id);
                 this.test();
                 this.testClass.handledAfterEach(id);
-
                 this.totalRepeatedUnitTestPassed += this.assertion.judge() ? 1 : 0;
 
 //                lấy đánh giá ở mỗi class assertion sau khi test xong hết sẽ in ra thông báo
                 this.judgmentMessages.add(this.assertion.getJudgementString());
-
-//                khởi tạo lại assertion mới mỗi lần repeat 1 utest
-                this.assertion = new Assertion();
             } catch (NullPointerException | IOException e) {
 //                chỗ này xử lí lỗi , nếu có lỗi xảy ra thì lỗi sẽ được thêm vào list lỗi để in ra khi test xong
                 ArrayList<String> temp = new ArrayList<>();
@@ -92,6 +88,9 @@ public abstract class UnitTest {
                 temp.addAll(Arrays.stream(e.getStackTrace()).map(v -> ANSI.RED + ANSI.TRIPLE_TAB + v + ANSI.RESET).toList());
                 this.judgmentMessages.add(temp);
                 this.forceFail();
+            } finally {
+//                khởi tạo lại assertion mới mỗi lần repeat 1 utest
+                this.assertion = new Assertion();
             }
         }
         if (totalRepeatedUnitTestPassed.equals(this.numOfRepetitions)) {

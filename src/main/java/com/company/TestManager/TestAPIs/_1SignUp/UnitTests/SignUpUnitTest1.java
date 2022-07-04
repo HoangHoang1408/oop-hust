@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SignUpUnitTest1 extends UnitTest {
     public SignUpUnitTest1(Test test) {
-        super(test, "With correct params format, the response code should be 1000 and message strings shall be not null as well as non-empty", 1);
+        super(test, "With correct params format, the response code should be 1000 and message strings shall be not null as well as non-empty", 4);
     }
 
     @Override

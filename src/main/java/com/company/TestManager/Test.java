@@ -127,7 +127,7 @@ public abstract class Test {
         }
         System.out.println(ANSI.YELLOW + "Preparing unit tests..." + ANSI.RESET);
 
-//        chạy phương thức beforeAll được override ở class con nếu có lỗi thì thoát luôn test fail
+//        chạy phương thức beforeAll được override ở class con nếu có lỗi thì thoát luôn
         if (!handledBeforeAll()) return;
 
 //        khởi tạo fail test list mục đích để so sánh với các test đã chọn và đưa ra test pass hay fail
@@ -143,10 +143,8 @@ public abstract class Test {
         }
 
 //        chạy phoưng thức after all được override ở class con nếu có lỗi thì thông báo lỗi và thoát
-        if (!handledAfterAll()) {
-            System.out.println("Fail to finish test. Try again later");
-            return;
-        }
+        if (!handledAfterAll()) return;
+        
 //        hàm có nhiệm vụ đưa ra test pass hay fail
         notifyUnitTestsPassedOrFail(chosenUnitTestList.size(), failedTestList);
     }
