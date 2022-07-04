@@ -12,7 +12,7 @@ public class ContactUsUnitTest3 extends UnitTest {
 
 
     public ContactUsUnitTest3(Test test) {
-        super(test, "If more than 60 characters are entered in the series field or the description field is not set the response code will be 1001 and the data should be null");
+        super(test, "If more than 60 characters are entered in phone field or phone field is not set the response code should be 1001 and the data should be null");
     }
 
     @Override

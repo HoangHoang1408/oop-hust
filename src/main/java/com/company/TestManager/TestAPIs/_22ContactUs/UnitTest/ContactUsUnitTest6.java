@@ -12,7 +12,7 @@ public class ContactUsUnitTest6 extends UnitTest {
 
 
     public ContactUsUnitTest6(Test test) {
-        super(test, "If the description is set over {1,2,3} or the description field is not set, the response code will be 1001 and the data should be null");
+        super(test, "If report_type exceeds {1,2,3} or is not set, the response code should be 1001 and the data should be null");
     }
 
     @Override

@@ -12,7 +12,7 @@ public class ContactUsUnitTest2 extends UnitTest {
 
 
     public ContactUsUnitTest2(Test test) {
-        super(test, "If more than 255 characters are entered in the series field, the response code will be 1001 and the data should be null");
+        super(test, "If more than 255 characters are entered in the name field or empty name field, the response code should be 1001 and the data should be null");
     }
 
     @Override

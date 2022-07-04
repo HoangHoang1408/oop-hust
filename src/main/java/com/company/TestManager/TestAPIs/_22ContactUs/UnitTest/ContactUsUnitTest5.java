@@ -11,7 +11,7 @@ public class ContactUsUnitTest5 extends UnitTest {
 
 
     public ContactUsUnitTest5(Test test) {
-        super(test, "If the description field is not set, the response code will be 1001 and the data should be null ");
+        super(test, "If content is not set, the response code should be 1001 and the data should be null ");
     }
 
     @Override
