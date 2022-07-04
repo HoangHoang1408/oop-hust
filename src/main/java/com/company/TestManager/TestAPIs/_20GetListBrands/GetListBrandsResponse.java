@@ -4,7 +4,7 @@ import com.company.TestManager.Objects.BaseResponse;
 
 import java.util.ArrayList;
 
-public class GetListBrandResponse extends BaseResponse {
+public class GetListBrandsResponse extends BaseResponse {
     public Data data;
 
     static class Data {
