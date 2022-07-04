@@ -9,7 +9,8 @@ public class CreateBidResponse extends BaseResponse {
     public Data data;
 
     public static class Data {
+        public ArrayList<Bid> bids;
         public String total;
-        ArrayList<Bid> bid;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.company.TestManager.TestAPIs._17CreateBid.UnitTest;
 
+import com.company.TestManager.Objects.Bid;
 import com.company.TestManager.Test;
 import com.company.TestManager.TestAPIs._17CreateBid.CreateBidResponse;
 import com.company.TestManager.TestAPIs._17CreateBid.CreateBidTest;
@@ -19,6 +20,12 @@ public class CreateBidUnitTest1 extends UnitTest {
        this.assertion.assertNotEquals(res,null);
        this.assertion.assertEquals(res.code, 1000);
        this.assertion.assertNotEquals(res.data, null);
+
+       this.assertion.assertNotEquals(res.data.total, null);
+       this.assertion.assertNotEquals(res.data.bids, null);
+       for(Bid s : res.data.bids){
+           this.assertion.assertNotEquals(s, null);
+       }
     }
 
 }
