@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class DeleteCommentUnitTest1 extends UnitTest {
 
     public DeleteCommentUnitTest1(Test test){
-        super(test,"With correct params,...");
+        super(test,"With correct params, response code should be 1000 and data should not be null ");
     }
     public void test() throws IOException{
         DeleteCommentResponse res= Connection.sendPostRequest(this.fullURLString+"/"+ DeleteCommentTest.comment_id,new HashMap<>(),DeleteCommentResponse.class,DeleteCommentTest.access_token);
