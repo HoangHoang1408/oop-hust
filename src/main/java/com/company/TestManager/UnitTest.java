@@ -70,15 +70,23 @@ public abstract class UnitTest {
     protected abstract void test() throws IOException;
 
     protected boolean executeTest(int id) {
+//        loop số lần mong muốn
         for (int i = 0; i < numOfRepetitions; i++) {
             try {
+//                chạy hàm before each được ovr ở class con
                 this.testClass.handledBeforeEach(id);
                 this.test();
                 this.testClass.handledAfterEach(id);
+
                 this.totalRepeatedUnitTestPassed += this.assertion.judge() ? 1 : 0;
+
+//                lấy đánh giá ở mỗi class assertion sau khi test xong hết sẽ in ra thông báo
                 this.judgmentMessages.add(this.assertion.getJudgementString());
+
+//                khởi tạo lại assertion mới mỗi lần repeat 1 utest
                 this.assertion = new Assertion();
             } catch (NullPointerException | IOException e) {
+//                chỗ này xử lí lỗi , nếu có lỗi xảy ra thì lỗi sẽ được thêm vào list lỗi để in ra khi test xong
                 ArrayList<String> temp = new ArrayList<>();
                 temp.add(ANSI.DOUBLE_TAB + e.getMessage());
                 temp.addAll(Arrays.stream(e.getStackTrace()).map(v -> ANSI.RED + ANSI.TRIPLE_TAB + v + ANSI.RESET).toList());
@@ -90,6 +98,7 @@ public abstract class UnitTest {
             notifyTestPassed(id);
             return true;
         }
+//        chú ý cái này vì nó có phương thức để in ra lỗi
         notifyTestFailed(id);
         return false;
     }

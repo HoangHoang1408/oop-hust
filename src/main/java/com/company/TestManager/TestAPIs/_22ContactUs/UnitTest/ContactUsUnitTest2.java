@@ -25,7 +25,7 @@ public class ContactUsUnitTest2 extends UnitTest {
         this.assertion.assertTrue(res.message.length() > 0);
         this.assertion.assertEquals(res.data, null);
 
-        this.params.put("name", null);
+        this.params.put("name", "");
         res = this.sendPostRequestWithAccessToken(ContactUsResponse.class);
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1001);

@@ -40,7 +40,7 @@ public abstract class Test {
         }
     }
 
-    protected void beforeEach() throws  IOException {
+    protected void beforeEach() throws IOException {
     }
 
     void handledBeforeEach(int testId) throws IOException {
@@ -55,13 +55,15 @@ public abstract class Test {
     protected void afterAll() throws IOException {
     }
 
-    private void handledAfterAll() {
+    private boolean handledAfterAll() {
         try {
             afterAll();
+            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println(ANSI.RED + "Failed to finish after unit tests!");
             System.out.println("Try again later" + ANSI.RESET);
+            return false;
         }
     }
 
@@ -117,21 +119,35 @@ public abstract class Test {
         System.out.println(ANSI.RED + (failedTestList.size() != 1 ? "Failed test ids: " : "Failed test id: ") + String.join(", ", failedTestList) + ANSI.RESET);
     }
 
+    //    thực hiện chọn test id để test trong 1 test api và loop qua những id đc chọn để gọi unittest và thực hiện unittest đó. Trước khi chạy các unittest đc chọn thì hàm beforeall đc chạy và sau khi unittest chạy xong hàm after all được chạy
     private void executeUnitTests() {
         if (this.unitTests.size() <= 0) {
             System.out.println(ANSI.YELLOW + "This api has no test!" + ANSI.RESET);
             return;
         }
         System.out.println(ANSI.YELLOW + "Preparing unit tests..." + ANSI.RESET);
+
+//        chạy phương thức beforeAll được override ở class con nếu có lỗi thì thoát luôn test fail
         if (!handledBeforeAll()) return;
-        ArrayList<Integer> chosenUnitTestList = takeChosenUnitTestIds();
-        System.out.println(ANSI.YELLOW + "\nTesting for " + this.apiName + " api...\n" + ANSI.RESET);
+
+//        khởi tạo fail test list mục đích để so sánh với các test đã chọn và đưa ra test pass hay fail
         ArrayList<String> failedTestList = new ArrayList<>();
+
+//        thực hiện lấy các id của user nhập vào
+        ArrayList<Integer> chosenUnitTestList = takeChosenUnitTestIds();
+
+//        loop và chạy các unittest
         for (Integer testId : chosenUnitTestList) {
             boolean passed = this.unitTests.get(testId - 1).executeTest(testId);
             if (!passed) failedTestList.add(testId.toString());
         }
-        handledAfterAll();
+
+//        chạy phoưng thức after all được override ở class con nếu có lỗi thì thông báo lỗi và thoát
+        if (!handledAfterAll()) {
+            System.out.println("Fail to finish test. Try again later");
+            return;
+        }
+//        hàm có nhiệm vụ đưa ra test pass hay fail
         notifyUnitTestsPassedOrFail(chosenUnitTestList.size(), failedTestList);
     }
 

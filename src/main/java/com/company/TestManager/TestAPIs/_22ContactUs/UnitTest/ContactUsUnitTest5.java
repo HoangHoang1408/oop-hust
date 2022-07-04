@@ -17,7 +17,7 @@ public class ContactUsUnitTest5 extends UnitTest {
     @Override
     protected void test() throws IOException {
         this.params = ContactUsTest.generateDefaultParams();
-        this.params.put("content", null);
+        this.params.remove("content");
         ContactUsResponse res = this.sendPostRequestWithAccessToken(ContactUsResponse.class);
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1001);
