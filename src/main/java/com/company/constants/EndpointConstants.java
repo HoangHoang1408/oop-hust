@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class EndpointConstants {
     public static final String DEFAULT_BASE_URL = "https://auctions-app-2.herokuapp.com/api";
-    public static final String BASE_URL_2 = "https://auctions-app3.herokuapp.com/api";
+    public static final String BASE_URL_2 = "https://auction-app3.herokuapp.com/api";
     public static final String SIGN_UP = "signup";
     public static final String LOG_IN = "login";
     public static final String LOG_OUT = "logout";
