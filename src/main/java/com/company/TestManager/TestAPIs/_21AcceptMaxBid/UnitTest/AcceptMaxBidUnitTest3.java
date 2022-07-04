@@ -15,7 +15,7 @@ public class AcceptMaxBidUnitTest3 extends UnitTest {
 
     public void test() throws IOException{
         this.params = AcceptMaxBidTest.generateDefaultParams();
-        AcceptMaxBidResponse res= Connection.sendPostRequest(this.fullURLString +"/413", this.params, AcceptMaxBidResponse.class, null);
+        AcceptMaxBidResponse res= Connection.sendPostRequest(this.fullURLString +"/430", this.params, AcceptMaxBidResponse.class, null);
 
         this.assertion.assertNotEquals(res, null);
         this.assertion.assertEquals(res.code, 1004);

@@ -3,12 +3,14 @@ package com.company.TestManager.TestAPIs._21AcceptMaxBid;
 import com.company.TestManager.Objects.BaseResponse;
 import com.company.TestManager.Objects.User;
 
+import java.util.ArrayList;
+
 public class AcceptMaxBidResponse extends BaseResponse {
     public Data data;
 
     public static class Data{
         public Item_info item_info;
-        public Auction_info auction_info;
+        public ArrayList<Auction_info> auction_info;
     }
     public static class Auction_info{
         public String title;

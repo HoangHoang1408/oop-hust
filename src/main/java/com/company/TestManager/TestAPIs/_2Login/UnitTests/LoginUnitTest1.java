@@ -3,6 +3,7 @@ package com.company.TestManager.TestAPIs._2Login.UnitTests;
 import com.company.TestManager.Objects.User;
 import com.company.TestManager.Test;
 import com.company.TestManager.TestAPIs._2Login.LoginResponse;
+import com.company.TestManager.TestAPIs._2Login.LoginTest;
 import com.company.TestManager.UnitTest;
 
 import java.io.IOException;
@@ -16,9 +17,9 @@ public class LoginUnitTest1 extends UnitTest {
     @Override
     public void test() throws IOException {
 //        truyền các params để gọi request đến server
-        String tempEmail = "thanh12345@gmail.com";
+        String tempEmail = LoginTest.email;
         this.params.put("email", tempEmail);
-        this.params.put("password", "123456");
+        this.params.put("password", LoginTest.password);
 
 //        gửi request và truyền vào class của object cần trả về
         LoginResponse res = this.sendPostRequest(LoginResponse.class);
