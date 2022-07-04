@@ -21,7 +21,7 @@ public class EndpointConstants {
     public static final String CREATE_ITEM = "items/create";
     public static final String CREATE_COMMENT = "comments/create";
     public static final String GET_LIST_COMMENTS = "comments";
-    public static final String DELETE_COMMENT = "comments";
+    public static final String DELETE_COMMENT = "comments/delete";
     public static final String CREATE_BID = "bids/create";
     public static final String GET_LIST_BIDS = "bids";
     public static final String GET_LIST_CATEGORIES = "categories";
