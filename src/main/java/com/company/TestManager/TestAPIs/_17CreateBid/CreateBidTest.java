@@ -2,6 +2,7 @@ package com.company.TestManager.TestAPIs._17CreateBid;
 
 import com.company.BaseURL;
 import com.company.TestManager.Connection;
+import com.company.TestManager.Objects.Bid;
 import com.company.TestManager.Test;
 import com.company.TestManager.TestAPIs._17CreateBid.UnitTest.*;
 import com.company.TestManager.TestAPIs._18GetListBids.GetListBidsResponse;
@@ -23,8 +24,8 @@ public class CreateBidTest extends Test {
 
     public static HashMap<String, String> generateDefaultParams() {
         String price = CreateBidTest.max_Bid;
-        int priceInt = Integer.parseInt(price) + 1;
-        price = String.valueOf(priceInt);
+        Long priceLong = Long.parseLong(price);
+        price = String.valueOf(priceLong);
         return new HashMap<>(Map.of(
                 "price", price,
                 "bid_last_id", "10"
@@ -41,11 +42,11 @@ public class CreateBidTest extends Test {
         tempParams.clear();
         tempParams.put("index", "0");
         tempParams.put("count", "1");
-        GetListBidsResponse res1 = Connection.sendGetRequest(this.baseURLString + "/" + EndpointConstants.GET_LIST_BIDS + "/12", tempParams, GetListBidsResponse.class, null);
-        for (GetListBidsResponse.Bids s : res1.data.bids) {
-            CreateBidTest.max_Bid = s.price;
+        GetListBidsResponse res1 = Connection.sendGetRequest(this.baseURLString + "/" + EndpointConstants.GET_LIST_BIDS + "/372", tempParams, GetListBidsResponse.class, null);
+            for (Bid s : res1.data.bids) {
+                CreateBidTest.max_Bid = s.price;
+            }
         }
-    }
 
     @Override
     protected void initUnitTests() {

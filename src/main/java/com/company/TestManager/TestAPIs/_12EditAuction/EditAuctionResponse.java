@@ -9,6 +9,12 @@ public class EditAuctionResponse extends BaseResponse {
         public String category_id;
         public String start_date;
         public String end_date;
-        public String title_ni;
+        public String title;
+        public String auction_id;
+        public String selling_user_id;
+        public String status;
+        public String reason;
+
+
     }
 }

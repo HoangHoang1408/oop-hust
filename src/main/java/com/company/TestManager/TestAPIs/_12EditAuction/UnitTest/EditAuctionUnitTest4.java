@@ -19,7 +19,7 @@ public class EditAuctionUnitTest4 extends UnitTest {
     public void test() throws IOException {
         this.params = EditAuctionTest.generateDefaultParams();
 
-        EditAuctionResponse resEdit = Connection.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(1, 54, 58), this.params, EditAuctionResponse.class, EditAuctionTest.access_token);
+        EditAuctionResponse resEdit = Connection.sendPostRequest(this.fullURLString + "/" + Util.randomNumberString(1, 373, 380), this.params, EditAuctionResponse.class, EditAuctionTest.access_token);
 
         this.assertion.assertNotEquals(resEdit, null);
         this.assertion.assertEquals(resEdit.code, 1006);
